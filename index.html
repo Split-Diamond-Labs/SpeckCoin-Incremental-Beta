@@ -1,6 +1,22 @@
 <html>
   <head>
+    <title id="title">Incremental Adventure: Genesis</title>
+    <link rel="stylesheet" type="text/css" src="css/main.css"/>
+    <script src="js/main.js"></script>
+    <link rel="icon" sizes="16x16 32x32" href="favicon.ico">
+    <!--[if IE]>
+    <link rel="shortcut icon" href="favicon.ico">
+    <![endif]-->
   </head>
-  <body>
+  <body onload="(function() {core.hideById('pageContent');setTimeout(function() {core.showById('pageContent');core.hideById('loader');}, 3000);})()">
+    <div id="loader">
+      
+    </div>
+    <div id="pageContent">
+      
+    </div>
+    <script>
+      
+    </script>
   </body>
 </html>
