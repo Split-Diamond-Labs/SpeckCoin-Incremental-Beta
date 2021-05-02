@@ -16,12 +16,17 @@
     </div>
     <script type="module" src="js/main.js">
       var load = function() {
+        console.log(1);
         Core.showById('loader');
         Core.hideById('pageContent');
-        setTimeout((function() {
+        console.log(2);
+        function done() {
           Core.showById('pageContent');
           Core.hideById('loader');
-        }), 3000);
+          console.log(4);
+        }
+        setTimeout(done, 3000);
+        console.log(3);
       };
       window.addEventListener("load",load);
     </script>
