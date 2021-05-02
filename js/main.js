@@ -1,1 +1,1 @@
-import * as core from "./modules/coreFunctions.js";
+import * from "./modules/coreFunctions.js";
