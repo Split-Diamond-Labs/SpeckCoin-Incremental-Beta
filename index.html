@@ -12,23 +12,10 @@
       <img src="favicon.ico"/>
     </div>
     <div id="pageContent">
-      <img height="42" width="42" src="images/speckCoin.png">0</img>
+      <img height="11" width="11" src="images/speckCoin.png">0</img>
     </div>
     <script type="module" src="js/main.js">
-      var load = function() {
-        console.log(1);
-        Core.showById('loader');
-        Core.hideById('pageContent');
-        console.log(2);
-        function done() {
-          Core.showById('pageContent');
-          Core.hideById('loader');
-          console.log(4);
-        }
-        setTimeout(done, 3000);
-        console.log(3);
-      };
-      load();
+      setInterval(update, 1);
     </script>
   </body>
 </html>
