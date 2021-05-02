@@ -15,14 +15,14 @@
       <img height="42" width="42" src="images/speckCoin.png">0</img>
     </div>
     <script type="module" src="js/main.js">
-      function load() {
+      var load = function() {
         Core.showById('loader');
         Core.hideById('pageContent');
         setTimeout((function() {
           Core.showById('pageContent');
           Core.hideById('loader');
         }), 3000);
-      }
+      };
     </script>
   </body>
 </html>
