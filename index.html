@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="favicon.ico">
     <![endif]-->
   </head>
-  <body>
+  <body onload="load()">
     <div id="loader">
       <img src="favicon.ico"/>
     </div>
@@ -15,13 +15,14 @@
       <img height="42" width="42" src="images/speckCoin.png">0</img>
     </div>
     <script type="module" src="js/main.js">
-      (function() {
+      function load() {
+        Core.showById('loader');
         Core.hideById('pageContent');
-        setTimeout(function() {
+        setTimeout((function() {
           Core.showById('pageContent');
           Core.hideById('loader');
-        }, 3000);
-      })()
+        }), 3000);
+      }
     </script>
   </body>
 </html>
