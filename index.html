@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="favicon.ico">
     <![endif]-->
   </head>
-  <body onload="load()">
+  <body>
     <div id="loader">
       <img src="favicon.ico"/>
     </div>
@@ -23,6 +23,7 @@
           Core.hideById('loader');
         }), 3000);
       };
+      window.addEventListener("load",load);
     </script>
   </body>
 </html>
