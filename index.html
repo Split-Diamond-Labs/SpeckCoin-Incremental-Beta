@@ -12,28 +12,51 @@
       <img src="favicon.ico"/>
     </div>
     <div id="pageContent">
-      <img height="16" width="16" src="images/speckCoin.png"/>0
+      <table id="resources">
+        <tbody>
+          <tr>
+            <td style="font-size:0;">
+              <img height="32" width="32" src="images/speckCoin.png" style="font-size:0;" id="coinImg"/>
+            </td>
+            <td width="120px;">
+              <p id="coinDisplay" style="color:gold;">0</p>
+            </td>
+            <td style="font-size:0;">
+              <img height="32" width="32" src="images/speckCoin.png" style="font-size:0;" id="diamondImg"/>
+            </td>
+            <td width="120px;">
+              <p id="diamondDisplay" style="color:blue;">0</p>
+            </td>
+            <td style="font-size:0;">
+              <img height="32" width="32" src="images/speckCoin.png" style="font-size:0;" id="protonImg"/>
+            </td>
+            <td width="120px;">
+              <p id="protonDisplay" style="color:green;">0</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <!-- Tab links -->
       <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')">London</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+        <button class="tablinks" onclick="openCity(event, 'Coin')" id="default">London</button>
+        <button class="tablinks" onclick="openCity(event, 'Diamond')">Paris</button>
+        <button class="tablinks" onclick="openCity(event, 'Proton')">Tokyo</button>
       </div>
 
       <!-- Tab content -->
-      <div id="London" class="tabcontent">
-        <h3>London</h3>
-        <p>London is the capital city of England.</p>
+      <div id="Coin" class="tabcontent">
+        <h2>Coin Producers</h2>
+        <p>(Buttons go here)</p>
       </div>
 
-      <div id="Paris" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p>
+      <div id="Diamond" class="tabcontent">
+        <h3>Diamond Producers</h3>
+        <p>...</p>
       </div>
 
-      <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
+      <div id="Proton" class="tabcontent">
+        <h3>Proton Producers</h3>
+        <p>...</p>
       </div>
       <iframe src="https://discord.com/widget?id=837598267906719784&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
       </iframe>
@@ -41,7 +64,7 @@
     <script src="js/main.js">
       console.log("So, you've invaded the console. Do whatever you like, except for changing the \"timePassed\" variable. Doing so will break your game.");
       setInterval(update, 25);
-      
+      document.getElementById("default").click();
     </script>
   </body>
 </html>
