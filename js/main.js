@@ -49,3 +49,4 @@ function update() {
     Core.showById("pageContent");
   }
 }
+
