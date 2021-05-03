@@ -4,12 +4,10 @@ class Core {
     alert(text);
   }
   static hideById(id) {
-    var x = document.getElementById(id);
-    x.style.display = "none";
+    document.getElementById(id).style.display = "none";
   }
   static showById(id) {
-    var x = document.getElementById(id);
-    x.style.display = "block";
+    document.getElementById(id).style.display = "block";
   }
   static randomElement(array) {
     return array[Math.floor(Math.random() * array.length)];
