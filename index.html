@@ -45,6 +45,10 @@
     </style>
   </head>
   <body>
+    <script src="js/main.js">
+      setInterval(update, 25);
+      document.getElementById("default").click();
+    </script>
     <div id="loader" style="display:none;">
       <img src="favicon.ico"/>
     </div>
@@ -96,9 +100,5 @@
         <p>...</p>
       </div>
     </div>
-    <script src="js/main.js">
-      setInterval(update, 25);
-      document.getElementById("default").click();
-    </script>
   </body>
 </html>
