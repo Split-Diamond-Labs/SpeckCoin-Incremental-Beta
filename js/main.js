@@ -57,7 +57,9 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 let timePassed = 0;
-function update() {
+
+document.getElementById("default").click();
+setInterval((function() { // Update
   timePassed++;
   console.log("Update");
 //   if (timePassed < 120) {
@@ -68,5 +70,5 @@ function update() {
 //     showById("pageContent");
 //   }
   
-}
+}), 25);
 
