@@ -42,11 +42,24 @@
         border: 1px solid #ccc;
         border-top: none;
       }
+      * {
+          margin: 0;
+          padding: 0;
+      }
+      .imgbox {
+          display: grid;
+          height: 100%;
+      }
+      .center-fit {
+          max-width: 100%;
+          max-height: 100vh;
+          margin: auto;
+      }
     </style>
   </head>
   <body>
-    <div id="loader" style="display:block;">
-      <img src="favicon.ico"/>
+    <div id="loader" class=ïmgbox style="display:block;">
+      <img class="center-fit" src="favicon.ico"/>
     </div>
     <div id="pageContent" style="display:none;">
       <table id="resources">
