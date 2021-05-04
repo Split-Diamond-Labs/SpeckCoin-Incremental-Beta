@@ -60,13 +60,13 @@ let timePassed = 0;
 function update() {
   timePassed++;
   console.log("Update");
-//   if (timePassed < 120) {
-//     showById("loader");
-//     hideById("pageContent");
-//   } else {
-//     hideById("loader");
-//     showById("pageContent");
-//   }
+  if (timePassed < 120) {
+    showById("loader");
+    hideById("pageContent");
+  } else {
+    hideById("loader");
+    showById("pageContent");
+  }
   
 }
 
