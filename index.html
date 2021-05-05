@@ -79,16 +79,16 @@
               <p id="coinDisplay" style="color:gold;">0</p>
             </td>
             <td style="font-size:0;">
-              <img height="32" width="32" src="images/speckCoin.png" style="font-size:0;" id="diamondImg"/>
+              <img height="32" width="32" src="images/diamond.png" style="font-size:0; display:none;" id="diamondImg"/>
             </td>
             <td width="120px;">
-              <p id="diamondDisplay" style="color:blue;">0</p>
+              <p id="diamondDisplay" style="color:blue; display:none;">0</p>
             </td>
             <td style="font-size:0;">
-              <img height="32" width="32" src="images/speckCoin.png" style="font-size:0;" id="protonImg"/>
+              <img height="32" width="32" src="images/speckCoin.png" style="font-size:0; display:none;" id="protonImg"/>
             </td>
             <td width="120px;">
-              <p id="protonDisplay" style="color:green;">0</p>
+              <p id="protonDisplay" style="color:green; display:none;">0</p>
             </td>
           </tr>
         </tbody>
@@ -96,24 +96,24 @@
       <!-- Tab links -->
       <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'Coin')" id="default">Coin Buildings</button>
-        <button class="tablinks" onclick="openCity(event, 'Diamond')">Diamond Buildings</button>
-        <button class="tablinks" onclick="openCity(event, 'Proton')">Proton Buildings</button>
+        <button class="tablinks" onclick="openCity(event, 'Diamond')" style="display:none;">Diamond Buildings</button>
+        <button class="tablinks" onclick="openCity(event, 'Proton')" style="display:none;">Proton Buildings</button>
       </div>
 
       <!-- Tab content -->
       <div id="Coin" class="tabcontent">
         <h2>Coin Producers</h2>
-        <p>(Buttons go here)</p>
+        <button onclick="(function(){})()">No use yet</button>
       </div>
 
       <div id="Diamond" class="tabcontent">
         <h2>Diamond Producers</h2>
-        <p>...</p>
+        <button onclick="(function(){})()">No use yet</button>
       </div>
 
       <div id="Proton" class="tabcontent">
         <h2>Proton Producers</h2>
-        <p>...</p>
+        <button onclick="(function(){})()">No use yet</button>
       </div>
     </div>
     <script src="js/main.js"></script>
