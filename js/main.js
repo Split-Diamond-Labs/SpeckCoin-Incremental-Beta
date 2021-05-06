@@ -26,15 +26,15 @@ class Core {
   }
 
   function saveGame() {
-    localStorage.setItem("local_game_saved",true)
+    localStorage.setItem("local_game_saved",true);
   }
 
   function loadGame() {
     if (localStorage.getItem("local_game_saved") != "true") {
-      console.log("No save was found, starting new game...")
-      return
+      console.log("No save was found, starting new game...");
+      return false;
     }
-
+    return true;
   }
 }
 
@@ -73,4 +73,7 @@ setInterval((function() { // Update
   }
   
 }), 25);
+if (loadGame()) {
+  console.log("Save found!");
+}
 
