@@ -1,6 +1,6 @@
 import * as Core from "./modules/coreFunctions.js";
 
-function openCity(evt, cityName) {
+public function openCity(evt, cityName) {
   // Declare all variables
   var i, tabcontent, tablinks;
 
