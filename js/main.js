@@ -24,26 +24,52 @@ class Core {
     return roman;
   }
 
-  static saveGame() {
+  static saveGame(data) {
     localStorage.setItem("local_game_saved",true);
+    localStorage.setItem("coins", data.game.coins);
+    localStorage.setItem("diamonds", data.game.diamonds);
+    localStorage.setItem("protons", data.game.protons);
+    localStorage.setItem("unlockedCoins", data.unlockedCoins);
+    localStorage.setItem("unlockedDiamonds", data.unlockedDiamonds);
+    localStorage.setItem("unlockedProtons", data.unlockedProtons);
   }
 
-  static loadGame() {
+  static loadGameTo(data) {
     if (localStorage.getItem("local_game_saved") != "true") {
       console.log("No save was found, starting new game...");
       return false;
     }
+    data.game.coins = localStorage.getItem("coins");
+    data.game.diamonds = localStorage.getItem("diamonds");
+    data.game.protons = localStorage.getItem("protons");
+    data.unlockedCoins = localStorage.getItem("unlockedCoins");
+    data.unlockedDiamonds = localStorage.getItem("unlockedDiamonds");
+    data.unlockedProtons = localStorage.getItem("unlockedProtons");
     return true;
   }
 }
 
 // Game class 
 class Game {
-  
+  constructor(coins, diamonds, protons) {
+    this.coins = coins;
+    this.diamonds = diamonds;
+    this.protons = protons;
+  }
   
   
   
 }
+
+var data = {
+  game: new Game([100, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]),
+  unlockedCoins: [true, false, false, false, false, false],
+  unlockedDiamonds: [false, false, false, false, false, false],
+  unlockedProtons: [false, false, false, false, false, false],
+  totalResets: 0
+};
+
+var coinBasePrices = [100, 2000, 40000, 800000, 16000000];
 
 function openCity(evt, cityName) {
   // Declare all variables
@@ -65,12 +91,19 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+function buyCoin(lvl) {
+  if (!((coinBasePrices * Math.pow(1.5, data.game.coins[lvl])) > data.game.coins[0])) {
+    data.game.coins[lvl]++;
+    data.game.coins[0] -= coinBasePrices * Math.pow(1.5, data.game.coins[lvl]);
+  }
+}
+
 let timePassed = 0;
 
 document.getElementById("default").click();
 setInterval((function() { // Update
   timePassed++;
-  console.log("Update");
   if (timePassed < 120) {
     Core.showById("loader");
     Core.hideById("pageContent");
@@ -78,9 +111,14 @@ setInterval((function() { // Update
     Core.hideById("loader");
     Core.showById("pageContent");
   }
+  document.getElementById("coinDisplay").innerHTML = data.game.coins[0];
+  document.getElementById("diamondDisplay").innerHTML = data.game.diamonds[0];
+  document.getElementById("protonDisplay").innerHTML = data.game.protons[0];
+  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [$(data.game.coin[1])] ($(coinBasePrices * Math.pow(1.5, data.game.coins[lvl]) SpeckCoin)`
   
 }), 25);
-if (Core.loadGame()) {
+if (Core.loadGame(data)) {
   console.log("Save found!");
 }
 
+window.addEventListener("beforeunload", function (e) { saveGame(data) });
