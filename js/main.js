@@ -1,4 +1,4 @@
-import * from "./modules/coreFunctions.js";
+import * as Core from "./modules/coreFunctions.js";
 
 function openCity(evt, cityName) {
   // Declare all variables
@@ -27,11 +27,11 @@ setInterval((function() { // Update
   timePassed++;
   console.log("Update");
   if (timePassed < 120) {
-    showById("loader");
-    hideById("pageContent");
+    Core.showById("loader");
+    Core.hideById("pageContent");
   } else {
-    hideById("loader");
-    showById("pageContent");
+    Core.hideById("loader");
+    Core.showById("pageContent");
   }
   
 }), 25);
