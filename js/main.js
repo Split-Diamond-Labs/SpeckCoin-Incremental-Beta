@@ -114,10 +114,10 @@ setInterval((function() { // Update
   document.getElementById("coinDisplay").innerHTML = data.game.coins[0];
   document.getElementById("diamondDisplay").innerHTML = data.game.diamonds[0];
   document.getElementById("protonDisplay").innerHTML = data.game.protons[0];
-  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [$(data.game.coin[1])] ($(coinBasePrices * Math.pow(1.5, data.game.coins[lvl]) SpeckCoin)`
+  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [${data.game.coin[1]}] (${coinBasePrices * Math.pow(1.5, data.game.coins[lvl]} SpeckCoin)`
   
 }), 25);
-if (Core.loadGame(data)) {
+if (Core.loadGameTo(data)) {
   console.log("Save found!");
 }
 
