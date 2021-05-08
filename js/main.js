@@ -142,4 +142,4 @@ if (Core.loadGameTo(data)) {
   console.log("Save found!");
 }
 
-window.addEventListener("beforeunload", function (e) { saveGame(data) });
+window.addEventListener("beforeunload", function (e) { Core.saveGame(data) });
