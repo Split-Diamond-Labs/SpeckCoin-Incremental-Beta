@@ -128,10 +128,10 @@ setInterval((function() { // Update
     Core.hideById("loader");
     Core.showById("pageContent");
   }
-  document.getElementById("coinDisplay").innerHTML = data.game.coins.amount[0];
-  document.getElementById("diamondDisplay").innerHTML = data.game.diamonds.amount[0];
-  document.getElementById("protonDisplay").innerHTML = data.game.protons.amount[0];
-  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [${data.game.coin.amount[1]}] (${data.game.coins.cost(1)} SpeckCoin)`
+  document.getElementById("coinDisplay").innerHTML = data.game.coins.amounts[0];
+  document.getElementById("diamondDisplay").innerHTML = data.game.diamonds.amounts[0];
+  document.getElementById("protonDisplay").innerHTML = data.game.protons.amounts[0];
+  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [${data.game.coin.amounts[1]}] (${data.game.coins.cost(1)} SpeckCoin)`
   
 }), 25);
 if (Core.loadGameTo(data)) {
