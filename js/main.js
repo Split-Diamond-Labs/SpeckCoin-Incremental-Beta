@@ -49,6 +49,27 @@ class Core {
   }
 }
 
+// Resource class
+class Resource {
+  constructor(amounts, basePrices) {
+    this.amounts = amounts;
+    this.basePrices = basePrices;
+  }
+  
+  buyBuilding(lvl) {
+    if (!((this.basePrices[lvl - 1] * Math.pow(1.5, this.amounts[lvl])) > this.amounts[0])) {
+      this.amounts[lvl]++;
+      this.amounts[0] -= this.basePrices[lvl - 1] * Math.pow(1.5, this.amounts[lvl]);
+    } else {
+      Core.notify("You cannot afford this!");
+    }
+  }
+  
+  cost(lvl) {
+    return this.basePrices[lvl - 1] * Math.pow(1.5, this.amounts[lvl]);
+  }
+}
+
 // Game class 
 class Game {
   constructor(coins, diamonds, protons) {
@@ -61,15 +82,18 @@ class Game {
   
 }
 
+
+
 var data = {
-  game: new Game([100, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]),
+  game: new Game(new Resource([100, 0, 0, 0, 0, 0], [100, 2000, 40000, 800000, 16000000]), 
+                 new Resource([0, 0, 0, 0, 0, 0], [1, 200, 40000, 8000000, 1600000000]), 
+                 new Resource([0, 0, 0, 0, 0, 0], [1, 400, 160000, 64000000, 25600000000])
+                ),
   unlockedCoins: [true, false, false, false, false, false],
   unlockedDiamonds: [false, false, false, false, false, false],
   unlockedProtons: [false, false, false, false, false, false],
   totalResets: 0
 };
-
-var coinBasePrices = [100, 2000, 40000, 800000, 16000000];
 
 function openCity(evt, cityName) {
   // Declare all variables
@@ -92,13 +116,6 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
-function buyCoin(lvl) {
-  if (!((coinBasePrices * Math.pow(1.5, data.game.coins[lvl])) > data.game.coins[0])) {
-    data.game.coins[lvl]++;
-    data.game.coins[0] -= coinBasePrices * Math.pow(1.5, data.game.coins[lvl]);
-  }
-}
-
 let timePassed = 0;
 
 document.getElementById("default").click();
@@ -111,10 +128,10 @@ setInterval((function() { // Update
     Core.hideById("loader");
     Core.showById("pageContent");
   }
-  document.getElementById("coinDisplay").innerHTML = data.game.coins[0];
-  document.getElementById("diamondDisplay").innerHTML = data.game.diamonds[0];
-  document.getElementById("protonDisplay").innerHTML = data.game.protons[0];
-  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [${data.game.coin[1]}] (${coinBasePrices * Math.pow(1.5, data.game.coins[lvl]} SpeckCoin)`
+  document.getElementById("coinDisplay").innerHTML = data.game.coins.amount[0];
+  document.getElementById("diamondDisplay").innerHTML = data.game.diamonds.amount[0];
+  document.getElementById("protonDisplay").innerHTML = data.game.protons.amount[0];
+  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [${data.game.coin.amount[1]}] (${data.game.coins.cost(1)} SpeckCoin)`
   
 }), 25);
 if (Core.loadGameTo(data)) {
