@@ -58,8 +58,8 @@ class Resource {
   
   buyBuilding(lvl) {
     if (!((this.basePrices[lvl - 1] * Math.pow(1.5, this.amounts[lvl])) > this.amounts[0])) {
+      this.amounts[0] -= this.basePrices[lvl - 1] * Math.pow(1.5, this.amounts[lvl]);
       this.amounts[lvl]++;
-      this.amounts[0] -= this.basePrices[lvl - 1] * Math.pow(1.5, this.amounts[lvl - 1]);
     } else {
       Core.notify("You cannot afford this!");
     }
