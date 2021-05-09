@@ -153,21 +153,21 @@ setInterval((function() { // Update
   document.getElementById("coinDisplay").innerHTML = data.game.coins.amounts[0];
   document.getElementById("diamondDisplay").innerHTML = data.game.diamonds.amounts[0];
   document.getElementById("protonDisplay").innerHTML = data.game.protons.amounts[0];
-  document.getElementById("coin1").innerHTML = `[${data.game.coins.amounts[1]}] Buy a Flyspeck {${10 * (data.game.opals.amounts[0] * 0.1 + 1)}each, currently: ${data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1)}} (${data.game.coins.cost(1)} SpeckCoin)`
+  document.getElementById("coin1").innerHTML = `[${data.game.coins.amounts[1]}] Buy a Flyspeck {${10 * (data.game.opals.amounts[0] * 0.1 + 1)} each, currently: ${data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1)}} (${data.game.coins.cost(1)} SpeckCoin)`
   
 }), 25);
 setInterval(function() {
-  for (var index = 1, index < data.game.coins.amounts.length, index++) {
+  for (var index = 1; index < data.game.coins.amounts.length; index++) {
     data.game.coins.amounts[1] += data.game.coins.amounts[index] * 10 * (data.game.opals.amounts[0] * 0.1 + 1);
   }
-  for (var index = 1, index < data.game.diamonds.amounts.length, index++) {
+  for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
     if (index != 1) {
       data.game.diamonds.amounts[index - 1] += data.game.diamonds.amounts[index] * 10;
     } else {
       data.game.opals.amounts[0] += data.game.diamonds.amounts[1];
     }
   }
-  for (var index = 1, index < data.game.protons.amounts.length, index++) {
+  for (var index = 1; index < data.game.protons.amounts.length; index++) {
     if (index != 1) {
       data.game.protons.amounts[index - 1] += data.game.protons.amounts[index] * 10;
     } else {
