@@ -136,6 +136,9 @@
 
 function resourcesPerSecond {
   // TODO
+  for (var index = 1, index < data.game.coins.amounts.length, index++) {
+    
+  }
 }
 
 
