@@ -42,19 +42,30 @@
       }
 
       static loadGameTo(data) {
+        function parseBool(val) { return val === true || val === "true" }
+        function stna(string) {
+          var array = [];
+          string.split(",").forEach(function(currentValue) {Number(array.push(currentValue));});
+          return array;
+        }
+        function stba(string) {
+          var array = [];
+          string.split(",").forEach(function(currentValue) {parseBool(array.push(currentValue));});
+          return array;
+        }
         if (localStorage.getItem("local_game_saved") != "true") {
           console.log("No save was found, starting new game...");
           return false;
         }
-        data.game.coins.amounts = localStorage.getItem("coins1");
-        data.game.coins.basePrices = localStorage.getItem("coins2");
-        data.game.diamonds.amounts = localStorage.getItem("diamonds1");
-        data.game.diamonds.basePrices = localStorage.getItem("diamonds2");
-        data.game.protons.amounts = localStorage.getItem("protons1");
-        data.game.protons.basePrices = localStorage.getItem("protons2");
-        data.unlockedCoins = localStorage.getItem("unlockedCoins");
-        data.unlockedDiamonds = localStorage.getItem("unlockedDiamonds");
-        data.unlockedProtons = localStorage.getItem("unlockedProtons");
+        data.game.coins.amounts = stna(localStorage.getItem("coins1"));
+        data.game.coins.basePrices = stna(localStorage.getItem("coins2"));
+        data.game.diamonds.amounts = stna(localStorage.getItem("diamonds1"));
+        data.game.diamonds.basePrices = stna(localStorage.getItem("diamonds2"));
+        data.game.protons.amounts = stna(localStorage.getItem("protons1"));
+        data.game.protons.basePrices = stna(localStorage.getItem("protons2"));
+        data.unlockedCoins = stba(localStorage.getItem("unlockedCoins"));
+        data.unlockedDiamonds = stba(localStorage.getItem("unlockedDiamonds"));
+        data.unlockedProtons = stba(localStorage.getItem("unlockedProtons");
         return true;
       }
       static exponential(number) {
@@ -62,7 +73,7 @@
         [numInSciNot.coefficient, numInSciNot.exponent] =
           number.toExponential().split('e').map(item => Number(item));
 
-        console.log(`${numInSciNot.coefficient} x 10^${numInSciNot.exponent}`);
+        return (number >= 1000000) ? `${numInSciNot.coefficient}e{numInSciNot.exponent}` : String(number);
       }
     }
 
@@ -150,10 +161,10 @@ setInterval((function() { // Update
     Core.hideById("loader");
     Core.showById("pageContent");
   }
-  document.getElementById("coinDisplay").innerHTML = data.game.coins.amounts[0];
-  document.getElementById("diamondDisplay").innerHTML = data.game.diamonds.amounts[0];
-  document.getElementById("protonDisplay").innerHTML = data.game.protons.amounts[0];
-  document.getElementById("coin1").innerHTML = `[${data.game.coins.amounts[1]}] Buy a Flyspeck {${10 * (data.game.opals.amounts[0] * 0.1 + 1)} each, currently: ${data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1)}} (${data.game.coins.cost(1)} SpeckCoin)`
+  document.getElementById("coinDisplay").innerHTML = Core.exponential(data.game.coins.amounts[0]);
+  document.getElementById("diamondDisplay").innerHTML = Core.exponential(data.game.diamonds.amounts[0]);
+  document.getElementById("protonDisplay").innerHTML = Core.exponential(data.game.protons.amounts[0]);
+  document.getElementById("coin1").innerHTML = `[${Core.exponential(data.game.coins.amounts[1])}] Buy a Flyspeck {${Core.exponential(10 * (data.game.opals.amounts[0] * 0.1 + 1))} each, currently: ${Core.exponential(data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1))}} (${data.game.coins.cost(1)} SpeckCoin)`
   
 }), 25);
 setInterval(function() {
