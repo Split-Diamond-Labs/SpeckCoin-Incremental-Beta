@@ -65,7 +65,7 @@
         data.game.protons.basePrices = stna(localStorage.getItem("protons2"));
         data.unlockedCoins = stba(localStorage.getItem("unlockedCoins"));
         data.unlockedDiamonds = stba(localStorage.getItem("unlockedDiamonds"));
-        data.unlockedProtons = stba(localStorage.getItem("unlockedProtons");
+        data.unlockedProtons = stba(localStorage.getItem("unlockedProtons"));
         return true;
       }
       static exponential(number) {
