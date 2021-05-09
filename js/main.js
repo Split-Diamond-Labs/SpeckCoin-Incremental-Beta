@@ -89,10 +89,12 @@
 
     // Game class 
     class Game {
-      constructor(coins, diamonds, protons) {
+      constructor(coins, diamonds, opals, protons, neutrons) {
         this.coins = coins;
         this.diamonds = diamonds;
+        this.opals = opals;
         this.protons = protons;
+        this.neutrons = neutrons;
       }
 
 
@@ -124,23 +126,16 @@
 // Game data (VERY IMPORTANT)
     var data = {
       game: new Game(new Resource([100, 0, 0, 0, 0, 0], [100, 2000, 40000, 800000, 16000000]), 
-                     new Resource([0, 0, 0, 0, 0, 0], [1, 200, 40000, 8000000, 1600000000]), 
-                     new Resource([0, 0, 0, 0, 0, 0], [1, 400, 160000, 64000000, 25600000000])
+                     new Resource([0, 0, 0, 0, 0, 0], [1, 200, 40000, 8000000, 1600000000]),
+                     new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]),
+                     new Resource([0, 0, 0, 0, 0, 0], [1, 400, 160000, 64000000, 25600000000]),
+                     new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0])
                     ),
       unlockedCoins: [true, false, false, false, false, false],
       unlockedDiamonds: [false, false, false, false, false, false],
       unlockedProtons: [false, false, false, false, false, false],
       totalResets: 0
     };
-
-
-function resourcesPerSecond {
-  // TODO
-  for (var index = 1, index < data.game.coins.amounts.length, index++) {
-    
-  }
-}
-
 
 // Global Variables (For display and stuff)
 let timePassed = 0;
@@ -158,11 +153,31 @@ setInterval((function() { // Update
   document.getElementById("coinDisplay").innerHTML = data.game.coins.amounts[0];
   document.getElementById("diamondDisplay").innerHTML = data.game.diamonds.amounts[0];
   document.getElementById("protonDisplay").innerHTML = data.game.protons.amounts[0];
-  document.getElementById("coin1").innerHTML = `Buy a Flyspeck [${data.game.coins.amounts[1]}] (${data.game.coins.cost(1)} SpeckCoin)`
+  document.getElementById("coin1").innerHTML = `[${data.game.coins.amounts[1]}] Buy a Flyspeck {${10 * (data.game.opals.amounts[0] * 0.1 + 1)}each, currently: ${data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1)}} (${data.game.coins.cost(1)} SpeckCoin)`
   
 }), 25);
+setInterval(function() {
+  for (var index = 1, index < data.game.coins.amounts.length, index++) {
+    data.game.coins.amounts[1] += data.game.coins.amounts[index] * 10 * (data.game.opals.amounts[0] * 0.1 + 1);
+  }
+  for (var index = 1, index < data.game.diamonds.amounts.length, index++) {
+    if (index != 1) {
+      data.game.diamonds.amounts[index - 1] += data.game.diamonds.amounts[index] * 10;
+    } else {
+      data.game.opals.amounts[0] += data.game.diamonds.amounts[1];
+    }
+  }
+  for (var index = 1, index < data.game.protons.amounts.length, index++) {
+    if (index != 1) {
+      data.game.protons.amounts[index - 1] += data.game.protons.amounts[index] * 10;
+    } else {
+      data.game.neutrons.amounts[0] += data.game.protons.amounts[1];
+    }
+  }
+}, 1000);
 if (Core.loadGameTo(data)) {
   console.log("Save found!");
 }
+
 
 window.addEventListener("beforeunload", function (e) { Core.saveGame(data) });
