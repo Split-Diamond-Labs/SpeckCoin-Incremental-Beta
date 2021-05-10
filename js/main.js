@@ -169,7 +169,7 @@ setInterval((function() { // Update
 }), 25);
 setInterval(function() {
   for (var index = 1; index < data.game.coins.amounts.length; index++) {
-    data.game.coins.amounts[1] += data.game.coins.amounts[index] * 10 * (data.game.opals.amounts[0] * 0.1 + 1);
+    data.game.coins.amounts[0] += data.game.coins.amounts[index] * 10 * (data.game.opals.amounts[0] * 0.1 + 1);
   }
   for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
     if (index != 1) {
