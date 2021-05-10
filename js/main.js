@@ -68,12 +68,12 @@
         data.unlockedProtons = stba(localStorage.getItem("unlockedProtons"));
         return true;
       }
-      static exponential(number) {
+      static exponential(num) {
         const numInSciNot = {};
         [numInSciNot.coefficient, numInSciNot.exponent] =
-          number.toExponential().split('e').map(item => Number(item));
+          num.toExponential(2).split('e').map(item => Number(item));
 
-        return (number >= 1000000) ? `${numInSciNot.coefficient}e{numInSciNot.exponent}` : String(number);
+        return (num >= 1000000) ? `${numInSciNot.coefficient}e{numInSciNot.exponent}` : String(num);
       }
     }
 
