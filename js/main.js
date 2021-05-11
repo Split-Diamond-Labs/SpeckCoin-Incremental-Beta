@@ -7,7 +7,7 @@
  * only works up to 305 (308 - 3), however it only worked up to ~14 due to rounding errors regardless
  * @param {*} long dictates whether or not a given number displays as scientific at 1,000,000. This auto defaults to short if input >= 1e13
  */
-function exponential(input, accuracy = 0, long = false) {
+function format(input, accuracy = 0, long = false) {
   let power;
   let mantissa;
   if (input instanceof Decimal) {
@@ -302,10 +302,10 @@ setInterval((function() { // Update
     Core.hideById("loader");
     Core.showById("pageContent");
   }
-  document.getElementById("coinDisplay").innerHTML = exponential(data.game.coins.amounts[0]);
-  document.getElementById("diamondDisplay").innerHTML = exponential(data.game.diamonds.amounts[0]);
-  document.getElementById("protonDisplay").innerHTML = exponential(data.game.protons.amounts[0]);
-  document.getElementById("coin1").innerHTML = `[${exponential(data.game.coins.amounts[1])}] Buy a Flyspeck {${exponential(10 * (data.game.opals.amounts[0] * 0.1 + 1))} each, currently: ${exponential(data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1))}} (${data.game.coins.cost(1)} SpeckCoin)`
+  document.getElementById("coinDisplay").innerHTML = format(data.game.coins.amounts[0]);
+  document.getElementById("diamondDisplay").innerHTML = format(data.game.diamonds.amounts[0]);
+  document.getElementById("protonDisplay").innerHTML = format(data.game.protons.amounts[0]);
+  document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Buy a Flyspeck {${format(10 * (data.game.opals.amounts[0] * 0.1 + 1))} each, currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1))}} (${format(data.game.coins.cost(1))} SpeckCoin)`
   
 }), 25);
 setInterval(function() {
