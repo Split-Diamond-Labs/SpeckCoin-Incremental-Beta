@@ -7,7 +7,7 @@
  * only works up to 305 (308 - 3), however it only worked up to ~14 due to rounding errors regardless
  * @param {*} long dictates whether or not a given number displays as scientific at 1,000,000. This auto defaults to short if input >= 1e13
  */
-function format(input) {
+function format(num) {
   const numInSciNot = {};
         [numInSciNot.coefficient, numInSciNot.exponent] =
           num.toExponential(2).split('e').map(item => Number(item));
