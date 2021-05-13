@@ -1,12 +1,5 @@
 // Tried to put into Core class, failed 
-/**
- * This function displays the numbers such as 1,234 or 1.00e1234 or 1.00e1.234M.
- * @param {Decimal | number} input number/Decimal to be formatted
- * @param {number} accuracy
- * how many decimal points that are to be displayed (Values <10 if !long, <1000 if long).
- * only works up to 305 (308 - 3), however it only worked up to ~14 due to rounding errors regardless
- * @param {*} long dictates whether or not a given number displays as scientific at 1,000,000. This auto defaults to short if input >= 1e13
- */
+
 function format(num) {
   const numInSciNot = {};
         [numInSciNot.coefficient, numInSciNot.exponent] =
