@@ -54,7 +54,7 @@ function format(num) {
         function parseBool(val) { return val === true || val === "true" }
         function stna(string) {
           var array = [];
-          string.split(",").forEach(function(currentValue) {Number(array.push(currentValue));});
+          string.split(",").forEach(function(currentValue) {array.push(Number(currentValue));});
           return array;
         }
         function stba(string) {
