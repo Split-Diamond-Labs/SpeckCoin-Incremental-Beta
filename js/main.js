@@ -92,7 +92,7 @@ setInterval((function() { // Update
   document.getElementById("coinDisplay").innerHTML = format(data.game.coins.amounts[0]);
   document.getElementById("diamondDisplay").innerHTML = format(data.game.diamonds.amounts[0]);
   document.getElementById("protonDisplay").innerHTML = format(data.game.protons.amounts[0]);
-  document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Buy a Flyspeck {${format(10 * (data.game.opals.amounts[0] * 0.1 + 1))} each, currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1))}} (${format(data.game.coins.cost(1))} SpeckCoin)`
+  document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Buy a Flyspeck {${format(10 * (data.game.opals.amounts[0] * 0.1 + 1))} SpC/s each, currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1))} SpC/s} (${format(data.game.coins.cost(1))} SpeckCoin)`
   
 }), 25);
 setInterval(function() {
