@@ -1,7 +1,7 @@
 // CORE FUNCTIONS
 class Core {
   static notify(text) {
-    alert(text);
+    document.getElementById("notify").innerHTML = text;
   }
   static hideById(id) {
     document.getElementById(id).style.display = "none";
