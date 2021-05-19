@@ -120,3 +120,14 @@ if (Core.loadGameTo(data)) {
 
 
 window.addEventListener("beforeunload", function (e) { Core.saveGame(data) });
+if (document.addEventListener) {
+  document.addEventListener('contextmenu', function(e) {
+    Core.notify("Lol, right-click doesnt work");
+    e.preventDefault();
+  }, false);
+} else {
+  document.attachEvent('oncontextmenu', function() {
+    Core.notify("Lol, right-click doesnt work");
+    window.event.returnValue = false;
+  });
+}
