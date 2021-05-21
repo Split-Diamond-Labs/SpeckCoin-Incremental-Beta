@@ -3,6 +3,7 @@ class Resource {
   constructor(amounts, basePrices) {
     this.amounts = amounts;
     this.basePrices = basePrices;
+    this.produced = [0, 0, 0, 0, 0, 0];
   }
 
   buyBuilding(lvl) {
@@ -15,6 +16,8 @@ class Resource {
   }
 
   cost(lvl) {
-    return this.basePrices[lvl - 1] * Math.pow(1.5, this.amounts[lvl]);
+    return this.basePrices[lvl - 1] * Math.pow(1.5, (this.amounts[lvl] - this.produced[lvl]));
   }
+  
+  
 }
