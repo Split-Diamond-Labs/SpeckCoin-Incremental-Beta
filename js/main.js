@@ -108,9 +108,9 @@ setInterval((function() { // Update
   }
   for (var index = 1; index < data.unlockedCoins.length; index++) {    
     if (data.unlockedCoins[index]) {
-      showById("coin" + index);
+      Core.showById("coin" + index);
     } else {
-      hideById("coin" + index);
+      Core.hideById("coin" + index);
     }
   }
 }), 25);
