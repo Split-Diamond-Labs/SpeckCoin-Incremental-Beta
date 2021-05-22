@@ -48,18 +48,18 @@ function format(num) {
     }
 
 // Game data (VERY IMPORTANT)
-    var data = {
-      game: new Game(new Resource([100, 0, 0, 0, 0, 0], [100, 2000, 40000, 800000, 16000000]), 
-                     new Resource([0, 0, 0, 0, 0, 0], [1, 200, 40000, 8000000, 1600000000]),
-                     new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]),
-                     new Resource([0, 0, 0, 0, 0, 0], [1, 400, 160000, 64000000, 25600000000]),
-                     new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0])
-                    ),
-      unlockedCoins: [true, false, false, false, false, false],
-      unlockedDiamonds: [false, false, false, false, false, false],
-      unlockedProtons: [false, false, false, false, false, false],
-      totalResets: 0
-    };
+var data = {
+  game: new Game(new Resource([100, 0, 0, 0, 0, 0], [100, 2000, 40000, 800000, 16000000]), 
+                 new Resource([0, 0, 0, 0, 0, 0], [1, 200, 40000, 8000000, 1600000000]),
+                 new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]),
+                 new Resource([0, 0, 0, 0, 0, 0], [1, 400, 160000, 64000000, 25600000000]),
+                 new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0])
+                ),
+  unlockedCoins: [true, true, false, false, false, false],
+  unlockedDiamonds: [false, false, false, false, false, false],
+  unlockedProtons: [false, false, false, false, false, false],
+  totalResets: 0
+};
 function reset() {
   data = {
       game: new Game(new Resource([100, 0, 0, 0, 0, 0], [100, 2000, 40000, 800000, 16000000]), 
