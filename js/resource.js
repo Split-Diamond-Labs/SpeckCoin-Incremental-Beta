@@ -18,6 +18,4 @@ class Resource {
   cost(lvl) {
     return this.basePrices[lvl - 1] * Math.pow(1.5, (this.amounts[lvl] - this.produced[lvl]));
   }
-  
-  
 }
