@@ -143,6 +143,8 @@ setInterval(function() {
 
 if (Core.loadGameTo(data)) {
   console.log("Save found!");
+} else {
+  reset();
 }
 
 
