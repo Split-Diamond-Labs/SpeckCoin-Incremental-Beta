@@ -1,10 +1,16 @@
+(function() {
+let isworking=false;
+let sessionearnings=0;
+let worktime=1000;
+let lettertotype=countdown="";
+let difficulty=1;
 $(".work-text").keyup(function(e) {
 		kc=e.keyCode;
 		if(isworking) {
 			if(kc==27) {
-				money+=sessionearnings;
+				diamonds+=sessionearnings;
 				isworking=false;
-				$(".work-paid").html("You got $"+sessionearnings+", type anything in the textbox to start again.");
+				$(".work-paid").html("You got "+sessionearnings+" diamonds, type anything in the textbox to start again.");
 				sessionearnings=0;
 				$(".work-text").val("");
 				$(".work-type").html("(start working first)");
@@ -19,15 +25,7 @@ $(".work-text").keyup(function(e) {
 					$(".work-type").html(lettertotype);
 					worktime=1000-difficulty*10;
 					$(".work-time").html(worktime);
-					sessionearnings+=Math.ceil(difficulty/10);
-					if(difficulty>=30)achievement(3);
-				}
-				else if($(".work-text").val()=="gamehelp16 rules") {
-					if(achievements[3].achieved) {
-						achievement(6);
-						worktime=5000;
-						$(".work-text").val("");
-					}
+					sessionearnings+=Math.floor(difficulty/10);
 				}
 			}
 		}
@@ -45,7 +43,7 @@ $(".work-text").keyup(function(e) {
 				if(worktime<=0) {
 					isworking=false;
 					sessionearnings=0;
-					$(".work-paid").html("You got $"+sessionearnings+", type anything in the textbox to start again.");
+					$(".work-paid").html("You got "+sessionearnings+" diamonds, type anything in the textbox to start again.");
 					$(".work-text").val("");
 					clearInterval(countdown);
 					update();
@@ -53,3 +51,12 @@ $(".work-text").keyup(function(e) {
 			},1);
 		}
 	});
+	function randomletter(a) {
+		output="";
+		for (i=0;i<a;i++) {
+        		output=output+String.fromCharCode(97 + Math.floor(Math.random() * 26));
+		}
+		return output;
+	}
+}
+)();
