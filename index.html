@@ -124,7 +124,20 @@
       <div id="Diamond" class="tabcontent">
         <h2>Diamond Producers</h2>
         <button onclick="(function(){})()">No use yet</button>
-        <p>Want some free diamonds? Play this (Click to start)</p>
+        <p id="workdialog" style="display: block;">Working is easy, you just need to type things you are told to within the time limit to earn diamonds. The time limit will be faster as you move on, but you will get paid more. <br>
+			
+If the time limit is over, you will not receive the diamonds you earned that session. <br>
+To actually receive the diamonds you earned, just press 'escape', but this means you have to start over.<br><br>
+
+Type anything in the textbox below to start.<br>
+
+<input type="text" class="work-text"><br>
+Type: '<span class="work-type">(start working first)</span>'                     Time: <span class="work-time"></span><br><br>
+
+<span class="work-paid">You got $2, type anything in the textbox to start again.</span><br><br>
+
+<input type="button" value="Go back" onclick="work('stop')">
+</p>
       </div>
 
       <div id="Proton" class="tabcontent">
