@@ -8,7 +8,7 @@ $(".work-text").keyup(function(e) {
 		kc=e.keyCode;
 		if(isworking) {
 			if(kc==27) {
-				diamonds+=sessionearnings;
+				data.game.diamonds[0]+=Math.floor(sessionearnings);
 				isworking=false;
 				$(".work-paid").html("You got "+sessionearnings+" diamonds, type anything in the textbox to start again.");
 				sessionearnings=0;
@@ -25,7 +25,7 @@ $(".work-text").keyup(function(e) {
 					$(".work-type").html(lettertotype);
 					worktime=1000-difficulty*10;
 					$(".work-time").html(worktime);
-					sessionearnings+=Math.floor(difficulty/10);
+					sessionearnings+=difficulty/10;
 				}
 			}
 		}
