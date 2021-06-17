@@ -6,8 +6,13 @@ class Core {
     var time = 0;
     var i = 0;
     var j = 0;
-    setTimeout(function(){document.getElementById("notify").style.color = "#ff" + digitsHex[j] + digitsHex[i] + digitsHex[j] + digitsHex[i];}, time);
-    j++;
+    for ( ; j < 16 ; ) {
+      for ( ; i < 16 ; ) {
+        setTimeout(function(){document.getElementById("notify").style.color = "#ff" + digitsHex[j] + "" + digitsHex[i] + "" + digitsHex[j] + "" + digitsHex[i];}, time);
+        time++
+      }
+      j++;
+    }
   }
   static hideById(id) {
     document.getElementById(id).style.display = "none";
