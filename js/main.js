@@ -1,5 +1,4 @@
-// Tried to put into Core class, failed 
-
+// Tried to put into Core class, failed
 function format(num) {
   const numInSciNot = {};
         [numInSciNot.coefficient, numInSciNot.exponent] =
@@ -161,3 +160,5 @@ if (document.addEventListener) {
     window.event.returnValue = false;
   });
 }
+
+reset()
