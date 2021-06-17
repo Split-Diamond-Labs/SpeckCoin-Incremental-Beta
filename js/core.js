@@ -132,7 +132,7 @@ function fade(id)
 		var color="#"+hexRed+""+hexGreen+""+hexBlue+"";
 //	alert(color);
 		
-	  	document.getElementById(id).style.backgroundColor=color;
+	  	document.getElementById("notify").style.backgroundColor=color;
 //  	alert(document.bgColor);
 
 		// increment color
