@@ -77,12 +77,21 @@ function reset() {
 
 // Global Variables (For display and stuff)
 let timePassed = 0;
+let secondsPassed = 0;
+
+
+if (Core.loadGameTo(data)) {
+  console.log("Save found!");
+} else {
+  reset();
+}
+
 
 document.getElementById("default").click();
 setInterval((function() { // Update
   timePassed++;
   
-  if (timePassed < 120) {
+  if (timePassed < 600) {
     Core.showById("loader");
     Core.hideById("pageContent");
   } else {
@@ -94,25 +103,25 @@ setInterval((function() { // Update
   document.getElementById("diamondDisplay").innerHTML = format(data.game.diamonds.amounts[0]);
   document.getElementById("protonDisplay").innerHTML = format(data.game.protons.amounts[0]);
   
-  document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Buy a Flyspeck {${format(10 * (data.game.opals.amounts[0] * 0.1 + 1))} SpeckCoin per second each, currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1))} SpC/s} (${format(data.game.coins.cost(1))} SpeckCoin)`
-  document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[2])}] Buy a Cloner {${format((data.game.opals.amounts[0] * 0.1 + 1))} Flyspecks per second each, currently: ${format(data.game.coins.amounts[2] * (data.game.opals.amounts[0] * 0.1 + 1))} Fpc/s} (${format(data.game.coins.cost(2))} SpeckCoin)`
-  document.getElementById("coin3").innerHTML = `[${format(data.game.coins.amounts[3])}] Buy a Daydream {${format((data.game.opals.amounts[0] * 0.1 + 1))} Cloners per second each, currently: ${format(data.game.coins.amounts[3] * (data.game.opals.amounts[0] * 0.1 + 1))} Clnr/s} (${format(data.game.coins.cost(3))} SpeckCoin)`
-  document.getElementById("coin4").innerHTML = `[${format(data.game.coins.amounts[4])}] Buy a Lollipop {${format((data.game.opals.amounts[0] * 0.1 + 1))} Daydreams per second each, currently: ${format(data.game.coins.amounts[4] * (data.game.opals.amounts[0] * 0.1 + 1))} Drm/s} (${format(data.game.coins.cost(4))} SpeckCoin)`
-  document.getElementById("coin5").innerHTML = `[${format(data.game.coins.amounts[5])}] Buy a Fly God {${format((data.game.opals.amounts[0] * 0.1 + 1))} Lollipops per second each, currently: ${format(data.game.coins.amounts[5] * (data.game.opals.amounts[0] * 0.1 + 1))} Llp/s} (${format(data.game.coins.cost(5))} SpeckCoin)`
+  document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Flyspeck {${format(10 * (data.game.opals.amounts[0] * 0.1 + 1))} SpeckCoin per second each, currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1))} SpC/s} (${format(data.game.coins.cost(1))} SpeckCoin)`
+  document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[2])}] Cloner {${format((data.game.opals.amounts[0] * 0.1 + 1))} Flyspecks per second each, currently: ${format(data.game.coins.amounts[2] * (data.game.opals.amounts[0] * 0.1 + 1))} Fpc/s} (${format(data.game.coins.cost(2))} SpeckCoin)`
+  document.getElementById("coin3").innerHTML = `[${format(data.game.coins.amounts[3])}] Daydream {${format((data.game.opals.amounts[0] * 0.1 + 1))} Cloners per second each, currently: ${format(data.game.coins.amounts[3] * (data.game.opals.amounts[0] * 0.1 + 1))} Clnr/s} (${format(data.game.coins.cost(3))} SpeckCoin)`
+  document.getElementById("coin4").innerHTML = `[${format(data.game.coins.amounts[4])}] Lollipop {${format((data.game.opals.amounts[0] * 0.1 + 1))} Daydreams per second each, currently: ${format(data.game.coins.amounts[4] * (data.game.opals.amounts[0] * 0.1 + 1))} Drm/s} (${format(data.game.coins.cost(4))} SpeckCoin)`
+  document.getElementById("coin5").innerHTML = `[${format(data.game.coins.amounts[5])}] Fly God {${format((data.game.opals.amounts[0] * 0.1 + 1))} Lollipops per second each, currently: ${format(data.game.coins.amounts[5] * (data.game.opals.amounts[0] * 0.1 + 1))} Llp/s} (${format(data.game.coins.cost(5))} SpeckCoin)`
   
   for (var index = 1; index < data.unlockedCoins.length; index++) {
-    if (data.game.coins.amounts[0] >= data.game.coins.cost(index) && !data.unlockedCoins[index]) {
+    if (data.game.coins.amounts[0] >= data.game.coins.cost(index)/2 && !data.unlockedCoins[index]) {
       data.unlockedCoins[index] = true;
     }                      
   }
   for (var index = 1; index < data.unlockedCoins.length; index++) {    
     if (data.unlockedCoins[index]) {
-      Core.showById("coin" + index);
+      Core.showById("coinDisp" + index);
     } else {
-      Core.hideById("coin" + index);
+      Core.hideById("coinDisp" + index);
     }
   }
-}), 25);
+}), 5);
 
 setInterval(function() {
   data.game.coins.amounts[0] += data.game.coins.amounts[1] * 10 * (data.game.opals.amounts[0] * 0.1 + 1);
@@ -140,12 +149,6 @@ setInterval(function() {
   }
 }, 1000);
 
-if (Core.loadGameTo(data)) {
-  console.log("Save found!");
-} else {
-  reset();
-}
-
 
 window.addEventListener("beforeunload", function (e) { Core.saveGame(data) });
 
@@ -161,4 +164,4 @@ if (document.addEventListener) {
   });
 }
 
-reset()
+Core.notify("Click the icons to buy");
