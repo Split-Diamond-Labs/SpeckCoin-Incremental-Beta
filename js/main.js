@@ -164,4 +164,4 @@ if (document.addEventListener) {
   });
 }
 
-Core.notify("Click the icons to buy");
+Core.notify("Welcome to SpeckCoin Incremental! Click the icons to buy them. ");
