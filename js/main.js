@@ -164,4 +164,64 @@ if (document.addEventListener) {
   });
 }
 
+window.addEventListener("keydown", keysPressed, false);
+window.addEventListener("keyup", keysReleased, false);
+
+let prizesClaimed = [false, false];
+let keys = [];
+
+function keysPressed(e) {
+	// store an entry for every key pressed
+	keys[e.code] = true;
+	
+	// Ctrl + Shift + J
+	if (keys[17] && keys[16] && keys[74]) {
+		// do something
+    Core.notify("Hey! Why do you want to invade the console, huh?");
+    e.preventDefault();
+	}
+  
+  // Ctrl + Shift + I
+	if (keys[17] && keys[16] && keys[73]) {
+		// do something
+    Core.notify("That's not your source code!");
+    e.preventDefault();
+	}
+	
+	// F12
+	if (keys[123]) {
+		// do something
+    Core.notify("<b>You are getting nowhere.</b>")
+		e.preventDefault();	
+	}
+  
+  if (keys[17] && (keys[49] || keys[50] || keys[51] || keys[52] || keys[53] || keys[54] || keys[55] || keys[56])) {
+		// do something
+		e.preventDefault();	
+	}
+  
+  if (keys[17] && (keys[49] && keys[50] && keys[51] && keys[52] && keys[53] && keys[54] && keys[55] && keys[56]) && !prizesClaimed[1]) {
+    Core.notify("You got <i><b>lots</b> of free money<i>!!!");
+    data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 2);
+    prizesClaimed[1] = true;
+  }
+  
+  
+  if (keys[17] && (keys[65] || keys[66] || keys[67] || keys[68] || keys[69] || keys[70])) {
+		// do something
+		e.preventDefault();	
+	}
+  
+  if (keys[17] && (keys[65] && keys[66] && keys[67] && keys[68] && keys[69] && keys[70]) && !prizesClaimed[0]) {
+    Core.notify("You got <i>free money<i>!!!");
+    data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 10);
+    prizesClaimed[0] = true;
+  }
+}
+
+function keysReleased(e) {
+	// mark keys that were released
+	keys[e.code] = false;
+}
+
 Core.notify("Welcome to SpeckCoin Incremental! Click the icons to buy them. ");
