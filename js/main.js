@@ -10,17 +10,6 @@ function format(num) {
 
 
 
-    // Game class 
-    class Game {
-      constructor(coins, diamonds, opals, protons, neutrons) {
-        this.coins = coins;
-        this.diamonds = diamonds;
-        this.opals = opals;
-        this.protons = protons;
-        this.neutrons = neutrons;
-      }
-
-
 
     }
 
@@ -48,16 +37,18 @@ function format(num) {
 
 // Game data (VERY IMPORTANT)
 var data = {
-  game: new Game(new Resource([100, 0, 0, 0, 0, 0], [100, 2000, 40000, 800000, 16000000]), 
+  "game": {
+    new Resource([100, 0, 0, 0, 0, 0], [100, 2000, 40000, 800000, 16000000]), 
                  new Resource([0, 0, 0, 0, 0, 0], [1, 200, 40000, 8000000, 1600000000]),
                  new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]),
                  new Resource([0, 0, 0, 0, 0, 0], [1, 400, 160000, 64000000, 25600000000]),
                  new Resource([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0])
-                ),
-  unlockedCoins: [true, true, false, false, false, false],
-  unlockedDiamonds: [false, false, false, false, false, false],
-  unlockedProtons: [false, false, false, false, false, false],
-  totalResets: 0
+},
+  "unlockedCoins": [true, true, false, false, false, false],
+  "unlockedDiamonds": [false, false, false, false, false, false],
+  "unlockedProtons": [false, false, false, false, false, false],
+	
+  "totalResets": 0
 };
 function reset() {
   data = {
@@ -203,7 +194,7 @@ function keysPressed(e) {
   if (keys[17] && (keys[49] && keys[50] && keys[51] && keys[52] && keys[53] && keys[54] && keys[55] && keys[56]) && !prizesClaimed[1]) {
     Core.notify("You got <i><b>lots</b> of free money<i>!!!");
     data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 2);
-    prizesClaimed[1] = true;
+    data.prizesClaimed[1] = true;
   }
   
   
@@ -215,7 +206,7 @@ function keysPressed(e) {
   if (keys[17] && (keys[65] && keys[66] && keys[67] && keys[68] && keys[69] && keys[70]) && !prizesClaimed[0]) {
     Core.notify("You got <i>free money<i>!!!");
     data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 10);
-    prizesClaimed[0] = true;
+    data.prizesClaimed[0] = true;
   }
 }
 
