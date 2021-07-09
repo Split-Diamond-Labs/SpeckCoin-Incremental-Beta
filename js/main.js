@@ -172,7 +172,7 @@ let keys = [];
 
 function keysPressed(e) {
 	// store an entry for every key pressed
-	keys[e.code] = true;
+	keys[e.keyCode] = true;
 	
 	// Ctrl + Shift + J
 	if (keys[17] && keys[16] && keys[74]) {
@@ -221,7 +221,7 @@ function keysPressed(e) {
 
 function keysReleased(e) {
 	// mark keys that were released
-	keys[e.code] = false;
+	keys[e.keyCode] = false;
 }
 
 Core.notify("Welcome to SpeckCoin Incremental! Click the icons to buy them. ");
