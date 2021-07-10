@@ -206,7 +206,7 @@ setInterval(function() {
     if (index != 1) {
       data.game.protons.amounts[index - 1] += data.game.protons.amounts[index] * 10;
     } else {
-      data.game.neutrons.amounts[0] += data.game.protons.amounts[1];
+      data.game.neutrons += data.game.protons.amounts[1];
     }
   }
 }, 1000);
