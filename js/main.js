@@ -11,7 +11,7 @@ function format(num) {
 
 
 
-    }
+    
 
 // Used in HTML for tabs 
     function openCity(evt, cityName) {
