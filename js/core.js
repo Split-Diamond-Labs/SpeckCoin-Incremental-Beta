@@ -29,42 +29,14 @@ class Core {
 
   static saveGame(data) {
     localStorage.setItem("local_game_saved",true);
-    localStorage.setItem("coins1", data.game.coins.amounts);
-    localStorage.setItem("coins2", data.game.coins.basePrices);
-    localStorage.setItem("diamonds1", data.game.diamonds.amounts);
-    localStorage.setItem("diamonds2", data.game.diamonds.basePrices);
-    localStorage.setItem("protons1", data.game.protons.amounts);
-    localStorage.setItem("protons2", data.game.protons.basePrices);
-    localStorage.setItem("unlockedCoins", data.unlockedCoins);
-    localStorage.setItem("unlockedDiamonds", data.unlockedDiamonds);
-    localStorage.setItem("unlockedProtons", data.unlockedProtons);
+    localStorage.setItem("save", JSON.stringify(data);
   }
 
-  static loadGameTo(data) {
-    function parseBool(val) { return val === true || val === "true" }
-    function stna(string) {
-      var array = [];
-      string.split(",").forEach(function(currentValue) {array.push(Number(currentValue));});
-      return array;
-    }
-    function stba(string) {
-      var array = [];
-      string.split(",").forEach(function(currentValue) {parseBool(array.push(currentValue));});
-      return array;
-    }
+  static loadGameTo() {
     if (localStorage.getItem("local_game_saved") != "true") {
-      console.log("No save was found, starting new game...");
       return false;
     }
-    data.game.coins.amounts = stna(localStorage.getItem("coins1"));
-    data.game.coins.basePrices = stna(localStorage.getItem("coins2"));
-    data.game.diamonds.amounts = stna(localStorage.getItem("diamonds1"));
-    data.game.diamonds.basePrices = stna(localStorage.getItem("diamonds2"));
-    data.game.protons.amounts = stna(localStorage.getItem("protons1"));
-    data.game.protons.basePrices = stna(localStorage.getItem("protons2"));
-    data.unlockedCoins = stba(localStorage.getItem("unlockedCoins"));
-    data.unlockedDiamonds = stba(localStorage.getItem("unlockedDiamonds"));
-    data.unlockedProtons = stba(localStorage.getItem("unlockedProtons"));
+    data = JSON.parse(localStorage.getItem("save");
     return true;
   }
 
