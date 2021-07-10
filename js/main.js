@@ -35,57 +35,66 @@ function format(num) {
       evt.currentTarget.className += " active";
     }
 
+const coins = {
+	buyBuilding: function (lvl) {
+        if (!(this.cost(lvl) > data.game.coins.amounts[0])) {
+          data.game.coins.amounts[0] -= this.cost(lvl);
+          data.game.coins.amounts[lvl]++;
+        } else {
+          Core.notify("You cannot afford this!");
+        }
+      },
+      cost: function (lvl) {
+        return Math.floor(data.game.coins.basePrices[lvl - 1] * Math.pow(1.5, (data.game.coins.amounts[lvl] - data.game.coins.produced[lvl])));
+      }
+};
+
+const diamonds = {
+	buyBuilding: function (lvl) {
+        if (!(this.cost(lvl) > data.game.diamonds.amounts[0])) {
+          data.game.diamonds.amounts[0] -= this.cost(lvl);
+          data.game.diamonds.amounts[lvl]++;
+        } else {
+          Core.notify("You cannot afford this!");
+        }
+      },
+      cost: function (lvl) {
+        return Math.floor(data.game.diamonds.basePrices[lvl - 1] * Math.pow(2, (data.game.diamonds.amounts[lvl] - data.game.diamonds.produced[lvl])));
+      }
+};
+
+const protons = {
+	buyBuilding: function (lvl) {
+        if (!(this.cost(lvl) > data.game.protons.amounts[0])) {
+          data.game.protons.amounts[0] -= this.cost(lvl);
+          data.game.protons.amounts[lvl]++;
+        } else {
+          Core.notify("You cannot afford this!");
+        }
+      },
+      cost: function (lvl) {
+        return Math.floor(data.game.protons.basePrices[lvl - 1] * Math.pow(4, (data.game.protons.amounts[lvl] - data.game.protons.produced[lvl])));
+      }
+};
+
 // Game data (VERY IMPORTANT)
 var data = {
   "game": {
     "coins": {
       "amounts": [100, 0, 0, 0, 0, 0],
       "basePrices": [100, 2000, 40000, 800000, 16000000],
-      "produced": [0, 0, 0, 0, 0],
-      "buyBuilding": function (lvl) {
-        if (!((this.basePrices[lvl - 1] * Math.pow(1.5, (this.amounts[lvl] - this.produced[lvl]))) > this.amounts[0])) {
-          this.amounts[0] -= this.cost(lvl);
-          this.amounts[lvl]++;
-        } else {
-          Core.notify("You cannot afford this!");
-        }
-      },
-      "cost": function (lvl) {
-        return Math.floor(this.basePrices[lvl - 1] * Math.pow(1.5, (this.amounts[lvl] - this.produced[lvl])));
-      }
+      "produced": [0, 0, 0, 0, 0]
     }
     "diamonds": {
       "amounts": [0, 0, 0, 0, 0, 0],
       "basePrices": [1, 200, 40000, 8000000, 1600000000],
-      "produced": [0, 0, 0, 0, 0],
-      "buyBuilding": function (lvl) {
-        if (!((this.basePrices[lvl - 1] * Math.pow(2, (this.amounts[lvl] - this.produced[lvl]))) > this.amounts[0])) {
-          this.amounts[0] -= this.cost(lvl);
-          this.amounts[lvl]++;
-        } else {
-          Core.notify("You cannot afford this!");
-        }
-      },
-      "cost": function (lvl) {
-        return Math.floor(this.basePrices[lvl - 1] * Math.pow(2, (this.amounts[lvl] - this.produced[lvl])));
-      }
+      "produced": [0, 0, 0, 0, 0]
     },
     "opals": 0,
     "protons": {
       "amounts": [0, 0, 0, 0, 0, 0],
       "basePrices": [1, 400, 160000, 64000000, 25600000000],
-      "produced": [0, 0, 0, 0, 0],
-      "buyBuilding": function (lvl) {
-        if (!((this.basePrices[lvl - 1] * Math.pow(4, (this.amounts[lvl] - this.produced[lvl]))) > this.amounts[0])) {
-          this.amounts[0] -= this.cost(lvl);
-          this.amounts[lvl]++;
-        } else {
-          Core.notify("You cannot afford this!");
-        }
-      },
-      "cost": function (lvl) {
-        return Math.floor(this.basePrices[lvl - 1] * Math.pow(4, (this.amounts[lvl] - this.produced[lvl])));
-      }
+      "produced": [0, 0, 0, 0, 0]
     },
     "neutrons": 0
 },
