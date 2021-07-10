@@ -102,7 +102,8 @@ var data = {
   "unlockedDiamonds": [false, false, false, false, false, false],
   "unlockedProtons": [false, false, false, false, false, false],
 	
-  "totalResets": 0
+  "totalResets": 0,
+  "prizesClaimed": [false, false];
 };
 function reset() {
   data = {
@@ -129,7 +130,8 @@ function reset() {
   "unlockedDiamonds": [false, false, false, false, false, false],
   "unlockedProtons": [false, false, false, false, false, false],
 	
-  "totalResets": 0
+  "totalResets": 0,
+    "prizesClaimed": [false, false]
 };
 
 }
@@ -139,10 +141,11 @@ let timePassed = 0;
 let secondsPassed = 0;
 
 
-if (Core.loadGameTo(data)) {
-  console.log("Save found!");
+if (Core.loadGameTo()) {
+  $("saveFound").html("Loading save...");
 } else {
   reset();
+  $("saveFound").html("Starting game...");
 }
 
 
@@ -226,7 +229,6 @@ if (document.addEventListener) {
 window.addEventListener("keydown", keysPressed, false);
 window.addEventListener("keyup", keysReleased, false);
 
-let prizesClaimed = [false, false];
 let keys = [];
 
 function keysPressed(e) {
