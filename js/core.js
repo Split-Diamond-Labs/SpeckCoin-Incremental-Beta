@@ -29,7 +29,7 @@ class Core {
 
   static saveGame(data) {
     localStorage.setItem("local_game_saved",true);
-    localStorage.setItem("save", JSON.stringify(data);
+    localStorage.setItem("save", JSON.stringify(data));
   }
 
   static loadGameTo() {
