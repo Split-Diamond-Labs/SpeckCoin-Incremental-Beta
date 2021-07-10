@@ -36,7 +36,7 @@ class Core {
     if (localStorage.getItem("local_game_saved") != "true") {
       return false;
     }
-    data = JSON.parse(localStorage.getItem("save");
+    data = JSON.parse(localStorage.getItem("save"));
     return true;
   }
 
