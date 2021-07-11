@@ -100,7 +100,7 @@ var data = {
 },
   "unlockedCoins": [true, true, false, false, false, false],
   "unlockedDiamonds": false,
-  "unlockedProtons": [false, false, false, false, false, false],
+  "unlockedProtons": false,
 	
   "totalResets": 0,
   "prizesClaimed": [false, false]
@@ -128,7 +128,7 @@ function reset() {
 },
   "unlockedCoins": [true, true, false, false, false, false],
   "unlockedDiamonds": false,
-  "unlockedProtons": [false, false, false, false, false, false],
+  "unlockedProtons": false,
 	
   "totalResets": 0,
     "prizesClaimed": [false, false]
