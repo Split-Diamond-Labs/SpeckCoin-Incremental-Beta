@@ -45,7 +45,7 @@ const coins = {
         }
       },
       cost: function (lvl) {
-        return Math.floor(data.game.coins.basePrices[lvl - 1] * Math.pow(1.5, (data.game.coins.amounts[lvl] - data.game.coins.produced[lvl])));
+        return Math.floor(data.game.coins.basePrices[lvl - 1] * Math.pow(1.5, (data.game.coins.amounts[lvl] - data.game.coins.produced[lvl - 1])));
       }
 };
 
@@ -59,7 +59,7 @@ const diamonds = {
         }
       },
       cost: function (lvl) {
-        return Math.floor(data.game.diamonds.basePrices[lvl - 1] * Math.pow(2, (data.game.diamonds.amounts[lvl] - data.game.diamonds.produced[lvl])));
+        return Math.floor(data.game.diamonds.basePrices[lvl - 1] * Math.pow(2, (data.game.diamonds.amounts[lvl] - data.game.diamonds.produced[lvl - 1])));
       }
 };
 
@@ -73,7 +73,7 @@ const protons = {
         }
       },
       cost: function (lvl) {
-        return Math.floor(data.game.protons.basePrices[lvl - 1] * Math.pow(4, (data.game.protons.amounts[lvl] - data.game.protons.produced[lvl])));
+        return Math.floor(data.game.protons.basePrices[lvl - 1] * Math.pow(4, (data.game.protons.amounts[lvl] - data.game.protons.produced[lvl - 1])));
       }
 };
 
@@ -162,6 +162,8 @@ $(document).ready(function() {
       Core.hideById("loader");
       Core.showById("pageContent");
     }
+	  
+    if (timePassed % 200 == 0) secondsPassed++;
 
     document.getElementById("coinDisplay").innerHTML = format(data.game.coins.amounts[0]);
     document.getElementById("diamondDisplay").innerHTML = format(data.game.diamonds.amounts[0]);
