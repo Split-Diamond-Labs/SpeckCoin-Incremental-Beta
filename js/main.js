@@ -136,153 +136,155 @@ function reset() {
 
 }
 
+
 // Global Variables (For display and stuff)
 let timePassed = 0;
 let secondsPassed = 0;
-
-
-if (Core.loadGameTo()) {
-  $("saveFound").html("Loading save...");
-} else {
-  reset();
-  $("saveFound").html("Starting game...");
-}
-
-
-document.getElementById("default").click();
-setInterval((function() { // Update
-  timePassed++;
-  
-  if (timePassed < 600) {
-    Core.showById("loader");
-    Core.hideById("pageContent");
-  } else {
-    Core.hideById("loader");
-    Core.showById("pageContent");
-  }
-  
-  document.getElementById("coinDisplay").innerHTML = format(data.game.coins.amounts[0]);
-  document.getElementById("diamondDisplay").innerHTML = format(data.game.diamonds.amounts[0]);
-  document.getElementById("protonDisplay").innerHTML = format(data.game.protons.amounts[0]);
-  
-  document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Flyspeck (Currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(1))} SpeckCoin</b>`;
-  document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[2])}] Cloner (Currently: ${format(data.game.coins.amounts[2] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(2))} SpeckCoin</b>`;
-  document.getElementById("coin3").innerHTML = `[${format(data.game.coins.amounts[3])}] Daydream (Currently: ${format(data.game.coins.amounts[3] * (data.game.opals * 0.1 + 1))} Clnr/s) Cost: <b>${format(coins.cost(3))} SpeckCoin</b>`
-  document.getElementById("coin4").innerHTML = `[${format(data.game.coins.amounts[4])}] Lollipop (Currently: ${format(data.game.coins.amounts[4] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(4))} SpeckCoin</b>`;
-  document.getElementById("coin5").innerHTML = `[${format(data.game.coins.amounts[5])}] Fly King (Currently: ${format(data.game.coins.amounts[5] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(5))} SpeckCoin</b>`;
-  
-  for (var index = 1; index < data.unlockedCoins.length; index++) {
-    if (data.game.coins.amounts[0] >= coins.cost(index)/2 && !data.unlockedCoins[index]) {
-      data.unlockedCoins[index] = true;
-    }                      
-  }
-  for (var index = 1; index < data.unlockedCoins.length; index++) {    
-    if (data.unlockedCoins[index]) {
-      Core.showById("coinDisp" + index);
-    } else {
-      Core.hideById("coinDisp" + index);
-    }
-  }
-}), 5);
-
-setInterval(function() {
-  data.game.coins.amounts[0] += data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1);
-  data.game.coins.produced[0] += data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1);
-  
-  for (var index = 2; index < data.game.coins.amounts.length; index++) {
-    data.game.coins.amounts[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
-    data.game.coins.produced[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
-  }
-  
-  for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
-    if (index != 1) {
-      data.game.diamonds.amounts[index - 1] += data.game.diamonds.amounts[index] * 10;
-    } else {
-      data.game.opals += data.game.diamonds.amounts[1];
-    }
-  }
-  
-  for (var index = 1; index < data.game.protons.amounts.length; index++) {
-    if (index != 1) {
-      data.game.protons.amounts[index - 1] += data.game.protons.amounts[index] * 10;
-    } else {
-      data.game.neutrons += data.game.protons.amounts[1];
-    }
-  }
-}, 1000);
-
-
-window.addEventListener("beforeunload", function (e) { Core.saveGame(data) });
-
-if (document.addEventListener) {
-  document.addEventListener('contextmenu', function(e) {
-    Core.notify("Lol, right-click doesn't work");
-    e.preventDefault();
-  }, false);
-} else {
-  document.attachEvent('oncontextmenu', function() {
-    Core.notify("Lol, right-click doesnt work");
-    window.event.returnValue = false;
-  });
-}
-
-window.addEventListener("keydown", keysPressed, false);
-window.addEventListener("keyup", keysReleased, false);
-
 let keys = [];
 
-function keysPressed(e) {
-	// store an entry for every key pressed
-	keys[e.keyCode] = true;
-	
-	// Ctrl + Shift + J
-	if (keys[17] && keys[16] && keys[74]) {
-		// do something
-    Core.notify("Hey! Why do you want to invade the console, huh?");
-    e.preventDefault();
-	}
-  
-  // Ctrl + Shift + I
-	if (keys[17] && keys[16] && keys[73]) {
-		// do something
-    Core.notify("That's not your source code!");
-    e.preventDefault();
-	}
-	
-	// F12
-	if (keys[123]) {
-		// do something
-    Core.notify("<b>You are getting nowhere.</b>")
-		e.preventDefault();	
-	}
-  
-  if (keys[17] && (keys[49] || keys[50] || keys[51] || keys[52] || keys[53] || keys[54] || keys[55] || keys[56])) {
-		// do something
-		e.preventDefault();	
-	}
-  
-  if (keys[17] && (keys[49] && keys[50] && keys[51] && keys[52] && keys[53] && keys[54] && keys[55] && keys[56]) && !prizesClaimed[1]) {
-    Core.notify("You got <i><b>lots</b> of free money<i>!!!");
-    data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 2);
-    data.prizesClaimed[1] = true;
+$(document).ready(function() {
+  if (Core.loadGameTo()) {
+    $("#saveFound").html("Loading save...");
+  } else {
+    reset();
+    $("#saveFound").html("Starting game...");
   }
-  
-  
-  if (keys[17] && (keys[65] || keys[66] || keys[67] || keys[68] || keys[69] || keys[70])) {
-		// do something
-		e.preventDefault();	
-	}
-  
-  if (keys[17] && (keys[65] && keys[66] && keys[67] && keys[68] && keys[69] && keys[70]) && !prizesClaimed[0]) {
-    Core.notify("You got <i>free money<i>!!!");
-    data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 10);
-    data.prizesClaimed[0] = true;
+
+
+  document.getElementById("default").click();
+  setInterval((function() { // Update
+    timePassed++;
+
+    if (timePassed < 600) {
+      Core.showById("loader");
+      Core.hideById("pageContent");
+    } else {
+      Core.hideById("loader");
+      Core.showById("pageContent");
+    }
+
+    document.getElementById("coinDisplay").innerHTML = format(data.game.coins.amounts[0]);
+    document.getElementById("diamondDisplay").innerHTML = format(data.game.diamonds.amounts[0]);
+    document.getElementById("protonDisplay").innerHTML = format(data.game.protons.amounts[0]);
+
+    document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Flyspeck (Currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(1))} SpeckCoin</b>`;
+    document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[2])}] Cloner (Currently: ${format(data.game.coins.amounts[2] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(2))} SpeckCoin</b>`;
+    document.getElementById("coin3").innerHTML = `[${format(data.game.coins.amounts[3])}] Daydream (Currently: ${format(data.game.coins.amounts[3] * (data.game.opals * 0.1 + 1))} Clnr/s) Cost: <b>${format(coins.cost(3))} SpeckCoin</b>`
+    document.getElementById("coin4").innerHTML = `[${format(data.game.coins.amounts[4])}] Lollipop (Currently: ${format(data.game.coins.amounts[4] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(4))} SpeckCoin</b>`;
+    document.getElementById("coin5").innerHTML = `[${format(data.game.coins.amounts[5])}] Fly King (Currently: ${format(data.game.coins.amounts[5] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(5))} SpeckCoin</b>`;
+
+    for (var index = 1; index < data.unlockedCoins.length; index++) {
+      if (data.game.coins.amounts[0] >= coins.cost(index)/2 && !data.unlockedCoins[index]) {
+        data.unlockedCoins[index] = true;
+      }                      
+    }
+    for (var index = 1; index < data.unlockedCoins.length; index++) {    
+      if (data.unlockedCoins[index]) {
+        Core.showById("coinDisp" + index);
+      } else {
+        Core.hideById("coinDisp" + index);
+      }
+    }
+  }), 5);
+
+  setInterval(function() {
+    data.game.coins.amounts[0] += data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1);
+    data.game.coins.produced[0] += data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1);
+
+    for (var index = 2; index < data.game.coins.amounts.length; index++) {
+      data.game.coins.amounts[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
+      data.game.coins.produced[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
+    }
+
+    for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
+      if (index != 1) {
+        data.game.diamonds.amounts[index - 1] += data.game.diamonds.amounts[index] * 10;
+      } else {
+        data.game.opals += data.game.diamonds.amounts[1];
+      }
+    }
+
+    for (var index = 1; index < data.game.protons.amounts.length; index++) {
+      if (index != 1) {
+        data.game.protons.amounts[index - 1] += data.game.protons.amounts[index] * 10;
+      } else {
+        data.game.neutrons += data.game.protons.amounts[1];
+      }
+    }
+  }, 1000);
+
+
+  window.addEventListener("beforeunload", function (e) { Core.saveGame(data) });
+
+  if (document.addEventListener) {
+    document.addEventListener('contextmenu', function(e) {
+      Core.notify("Lol, right-click doesn't work");
+      e.preventDefault();
+    }, false);
+  } else {
+    document.attachEvent('oncontextmenu', function() {
+      Core.notify("Lol, right-click doesnt work");
+      window.event.returnValue = false;
+    });
   }
-}
 
-function keysReleased(e) {
-	// mark keys that were released
-	keys[e.keyCode] = false;
-}
+  window.addEventListener("keydown", keysPressed, false);
+  window.addEventListener("keyup", keysReleased, false);
 
-Core.notify("Welcome to SpeckCoin Incremental! Click the icons to buy them. ");
+
+  function keysPressed(e) {
+    // store an entry for every key pressed
+    keys[e.keyCode] = true;
+
+    // Ctrl + Shift + J
+    if (keys[17] && keys[16] && keys[74]) {
+      // do something
+      Core.notify("Hey! Why do you want to invade the console, huh?");
+      e.preventDefault();
+    }
+
+    // Ctrl + Shift + I
+    if (keys[17] && keys[16] && keys[73]) {
+      // do something
+      Core.notify("That's not your source code!");
+      e.preventDefault();
+    }
+
+    // F12
+    if (keys[123]) {
+      // do something
+      Core.notify("<b>You are getting nowhere.</b>")
+      e.preventDefault();	
+    }
+
+    if (keys[17] && (keys[49] || keys[50] || keys[51] || keys[52] || keys[53] || keys[54] || keys[55] || keys[56])) {
+      // do something
+      e.preventDefault();	
+    }
+
+    if (keys[17] && (keys[49] && keys[50] && keys[51] && keys[52] && keys[53] && keys[54] && keys[55] && keys[56]) && !prizesClaimed[1]) {
+      Core.notify("You got <i><b>lots</b> of free money<i>!!!");
+      data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 2);
+      data.prizesClaimed[1] = true;
+    }
+
+
+    if (keys[17] && (keys[65] || keys[66] || keys[67] || keys[68] || keys[69] || keys[70])) {
+      // do something
+      e.preventDefault();	
+    }
+
+    if (keys[17] && (keys[65] && keys[66] && keys[67] && keys[68] && keys[69] && keys[70]) && !prizesClaimed[0]) {
+      Core.notify("You got <i>free money<i>!!!");
+      data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 10);
+      data.prizesClaimed[0] = true;
+    }
+  }
+
+  function keysReleased(e) {
+    // mark keys that were released
+    keys[e.keyCode] = false;
+  }
+
+  Core.notify("Welcome to SpeckCoin Incremental! Click the icons to buy them. ");
+});
