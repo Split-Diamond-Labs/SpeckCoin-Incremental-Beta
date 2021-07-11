@@ -99,7 +99,7 @@ var data = {
     "neutrons": 0
 },
   "unlockedCoins": [true, true, false, false, false, false],
-  "unlockedDiamonds": [false, false, false, false, false, false],
+  "unlockedDiamonds": false,
   "unlockedProtons": [false, false, false, false, false, false],
 	
   "totalResets": 0,
@@ -127,7 +127,7 @@ function reset() {
     "neutrons": 0
 },
   "unlockedCoins": [true, true, false, false, false, false],
-  "unlockedDiamonds": [false, false, false, false, false, false],
+  "unlockedDiamonds": false,
   "unlockedProtons": [false, false, false, false, false, false],
 	
   "totalResets": 0,
@@ -180,9 +180,9 @@ $(document).ready(function() {
     }
     for (var index = 1; index < data.unlockedCoins.length; index++) {    
       if (data.unlockedCoins[index]) {
-        Core.showById("coinDisp" + index);
+        $("#coinDisp" + index).show();
       } else {
-        Core.hideById("coinDisp" + index);
+        $("#coinDisp" + index).hide();
       }
     }
   }), 5);
