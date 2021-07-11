@@ -166,7 +166,7 @@ setInterval((function() { // Update
   document.getElementById("protonDisplay").innerHTML = format(data.game.protons.amounts[0]);
   
   document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Flyspeck (Currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(1))} SpeckCoin</b>`;
-  document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[1])}] Cloner (Currently: ${format(data.game.coins.amounts[2] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(2))} SpeckCoin</b>`;
+  document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[2])}] Cloner (Currently: ${format(data.game.coins.amounts[2] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(2))} SpeckCoin</b>`;
   document.getElementById("coin3").innerHTML = `[${format(data.game.coins.amounts[3])}] Daydream (Currently: ${format(data.game.coins.amounts[3] * (data.game.opals * 0.1 + 1))} Clnr/s) Cost: <b>${format(coins.cost(3))} SpeckCoin</b>`
   document.getElementById("coin4").innerHTML = `[${format(data.game.coins.amounts[4])}] Lollipop (Currently: ${format(data.game.coins.amounts[4] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(4))} SpeckCoin</b>`;
   document.getElementById("coin5").innerHTML = `[${format(data.game.coins.amounts[5])}] Fly King (Currently: ${format(data.game.coins.amounts[5] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(5))} SpeckCoin</b>`;
