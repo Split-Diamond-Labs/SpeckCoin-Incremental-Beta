@@ -191,16 +191,15 @@ $(document).ready(function() {
 
   setInterval(function() {
     data.game.coins.amounts[0] += data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1);
-    data.game.coins.produced[0] += data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1);
 
     for (var index = 2; index < data.game.coins.amounts.length; index++) {
       data.game.coins.amounts[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
-      data.game.coins.produced[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
+      data.game.coins.produced[index - ] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
     }
 
     for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
       if (index != 1) {
-        data.game.diamonds.amounts[index - 1] += data.game.diamonds.amounts[index] * 10;
+        data.game.diamonds.amounts[0] += Math.floor(data.game.diamonds.amounts[index]) * Math.pow(4, index - 1) * 0.05;
       } else {
         data.game.opals += data.game.diamonds.amounts[1];
       }
