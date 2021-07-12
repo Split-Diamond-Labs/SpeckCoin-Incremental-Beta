@@ -194,7 +194,7 @@ $(document).ready(function() {
 
     for (var index = 2; index < data.game.coins.amounts.length; index++) {
       data.game.coins.amounts[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
-      data.game.coins.produced[index - ] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
+      data.game.coins.produced[index - 2] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
     }
 
     for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
