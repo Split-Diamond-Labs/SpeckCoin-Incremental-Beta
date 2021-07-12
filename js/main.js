@@ -198,11 +198,7 @@ $(document).ready(function() {
     }
 
     for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
-      if (index != 1) {
-        data.game.diamonds.amounts[0] += Math.floor(data.game.diamonds.amounts[index]) * Math.pow(4, index - 1) * 0.05;
-      } else {
-        data.game.opals += data.game.diamonds.amounts[1];
-      }
+      data.game.opals += Math.floor(data.game.diamonds.amounts[index]) * Math.pow(4, index - 1) * 0.05;
     }
 
     for (var index = 1; index < data.game.protons.amounts.length; index++) {
