@@ -103,7 +103,7 @@ var data = {
   "unlockedProtons": false,
 	
   "totalResets": 0,
-  "prizesClaimed": [false, false]
+    "prizesClaimed": [false, false]
 };
 function reset() {
   data = {
