@@ -259,7 +259,7 @@ $(document).ready(function() {
       e.preventDefault();	
     }
 
-    if (keys[17] && (keys[49] && keys[50] && keys[51] && keys[52] && keys[53] && keys[54] && keys[55] && keys[56]) && !prizesClaimed[1]) {
+    if (keys[17] && (keys[49] && keys[50] && keys[51] && keys[52] && keys[53] && keys[54] && keys[55] && keys[56]) && !data.prizesClaimed[1]) {
       Core.notify("You got <i><b>lots</b> of free money<i>!!!");
       data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 2);
       data.prizesClaimed[1] = true;
@@ -271,7 +271,7 @@ $(document).ready(function() {
       e.preventDefault();	
     }
 
-    if (keys[17] && (keys[65] && keys[66] && keys[67] && keys[68] && keys[69] && keys[70]) && !prizesClaimed[0]) {
+    if (keys[17] && (keys[65] && keys[66] && keys[67] && keys[68] && keys[69] && keys[70]) && !data.prizesClaimed[0]) {
       Core.notify("You got <i>free money<i>!!!");
       data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[0] / 10);
       data.prizesClaimed[0] = true;
