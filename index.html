@@ -201,8 +201,8 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
-    <button onclick="(function() {if (prompt('Do you really want to reset? You will lose all progress! (Type \'yes\' to confirm)') == 'yes') {reset()}})()">Reset</button>
+    <span class="close" id="closeoptions">&times;</span>
+    <button onclick="(function() {if (prompt('Do you really want to reset? You will lose all progress! (Type \'yes\' to confirm)') == 'yes') {reset();document.getElementById('closeoptions').click();}})()">Reset</button>
   </div>
 
 </div>
