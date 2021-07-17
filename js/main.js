@@ -78,7 +78,7 @@ const protons = {
 };
 
 // Game data (VERY IMPORTANT)
-var data = {
+const dataObject = {
   "game": {
     "coins": {
       "amounts": [100, 0, 0, 0, 0, 0],
@@ -105,34 +105,9 @@ var data = {
   "totalResets": 0,
     "prizesClaimed": [false, false]
 };
+var data = dataObject;
 function reset() {
-  data = {
-  "game": {
-    "coins": {
-      "amounts": [100, 0, 0, 0, 0, 0],
-      "basePrices": [100, 2000, 40000, 800000, 16000000],
-      "produced": [0, 0, 0, 0, 0]
-    },
-    "diamonds": {
-      "amounts": [0, 0, 0, 0, 0, 0],
-      "basePrices": [1, 200, 40000, 8000000, 1600000000],
-      "produced": [0, 0, 0, 0, 0]
-    },
-    "opals": 0,
-    "protons": {
-      "amounts": [0, 0, 0, 0, 0, 0],
-      "basePrices": [1, 400, 160000, 64000000, 25600000000],
-      "produced": [0, 0, 0, 0, 0]
-    },
-    "neutrons": 0
-},
-  "unlockedCoins": [true, true, false, false, false, false],
-  "unlockedDiamonds": false,
-  "unlockedProtons": false,
-	
-  "totalResets": 0,
-    "prizesClaimed": [false, false]
-};
+  data = dataObject;
 
 }
 
@@ -170,10 +145,10 @@ $(document).ready(function() {
     document.getElementById("protonDisplay").innerHTML = format(data.game.protons.amounts[0]);
 
     document.getElementById("coin1").innerHTML = `[${format(data.game.coins.amounts[1])}] Flyspeck (Currently: ${format(data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(1))} SpeckCoin</b>`;
-    document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[2])}] Cloner (Currently: ${format(data.game.coins.amounts[2] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(2))} SpeckCoin</b>`;
-    document.getElementById("coin3").innerHTML = `[${format(data.game.coins.amounts[3])}] Daydream (Currently: ${format(data.game.coins.amounts[3] * (data.game.opals * 0.1 + 1))} Clnr/s) Cost: <b>${format(coins.cost(3))} SpeckCoin</b>`
-    document.getElementById("coin4").innerHTML = `[${format(data.game.coins.amounts[4])}] Lollipop (Currently: ${format(data.game.coins.amounts[4] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(4))} SpeckCoin</b>`;
-    document.getElementById("coin5").innerHTML = `[${format(data.game.coins.amounts[5])}] Fly King (Currently: ${format(data.game.coins.amounts[5] * (data.game.opals * 0.1 + 1))} SpC/s) Cost: <b>${format(coins.cost(5))} SpeckCoin</b>`;
+    document.getElementById("coin2").innerHTML = `[${format(data.game.coins.amounts[2])}] Cloner (Currently: ${format(data.game.coins.amounts[2] * (data.game.opals * 0.1 + 1))} Fpk/s) Cost: <b>${format(coins.cost(2))} SpeckCoin</b>`;
+    document.getElementById("coin3").innerHTML = `[${format(data.game.coins.amounts[3])}] Daydream (Currently: ${format(data.game.coins.amounts[3] * (data.game.opals * 0.1 + 1))} Cln/s) Cost: <b>${format(coins.cost(3))} SpeckCoin</b>`
+    document.getElementById("coin4").innerHTML = `[${format(data.game.coins.amounts[4])}] Lollipop (Currently: ${format(data.game.coins.amounts[4] * (data.game.opals * 0.1 + 1))} Drm/s) Cost: <b>${format(coins.cost(4))} SpeckCoin</b>`;
+    document.getElementById("coin5").innerHTML = `[${format(data.game.coins.amounts[5])}] Fly King (Currently: ${format(data.game.coins.amounts[5] * (data.game.opals * 0.1 + 1))} Llp/s) Cost: <b>${format(coins.cost(5))} SpeckCoin</b>`;
 
     for (var index = 1; index < data.unlockedCoins.length; index++) {
       if (data.game.coins.amounts[0] >= coins.cost(index)/2 && !data.unlockedCoins[index]) {
@@ -215,13 +190,11 @@ $(document).ready(function() {
 
   if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
-      Core.notify("Lol, right-click doesn't work");
-      e.preventDefault();
+      Core.notify("Imagine right-clicking in 2021");
     }, false);
   } else {
     document.attachEvent('oncontextmenu', function() {
-      Core.notify("Lol, right-click doesnt work");
-      window.event.returnValue = false;
+      Core.notify("Imagine right-clicking in 2021");
     });
   }
 
@@ -233,27 +206,7 @@ $(document).ready(function() {
     // store an entry for every key pressed
     keys[e.keyCode] = true;
 
-    // Ctrl + Shift + J
-    if (keys[17] && keys[16] && keys[74]) {
-      // do something
-      Core.notify("Hey! Why do you want to invade the console, huh?");
-      e.preventDefault();
-    }
-
-    // Ctrl + Shift + I
-    if (keys[17] && keys[16] && keys[73]) {
-      // do something
-      Core.notify("That's not your source code!");
-      e.preventDefault();
-    }
-
-    // F12
-    if (keys[123]) {
-      // do something
-      Core.notify("<b>You are getting nowhere.</b>")
-      e.preventDefault();	
-    }
-
+    
     if (keys[17] && (keys[49] || keys[50] || keys[51] || keys[52] || keys[53] || keys[54] || keys[55] || keys[56])) {
       // do something
       e.preventDefault();	
