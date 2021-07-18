@@ -260,5 +260,6 @@ $(document).ready(function() {
 	}
 }
   document.getElementById("importSave").addEventListener("change", Core.importSave, false);
+  document.getElementById("exportSave").addEventListener("click", Core.exportSave, false);
   Core.notify("Welcome to SpeckCoin Incremental! Click the icons to buy them. ");
 });

@@ -49,6 +49,10 @@ class Core {
   	fileReader.readAsText(selectedFile);
   }
 
+  static exportSave() {
+  	
+  }
+
 }
 var numSteps=0;
 var startingRed=0;
