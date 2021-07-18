@@ -40,6 +40,15 @@ class Core {
     return true;
   }
 
+  static importSave() {
+  	const selectedFile = document.getElementById('importSave').files[0];
+  	let fileReader = new FileReader();
+  	fileReader.onload = function(e) {
+  		data = JSON.parse(atob(e.target.result));
+  	};
+  	fileReader.readAsText(selectedFile);
+  }
+
 }
 var numSteps=0;
 var startingRed=0;
