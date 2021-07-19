@@ -47,11 +47,12 @@ class Core {
   		data = JSON.parse(atob(e.target.result));
   	};
   	fileReader.readAsText(selectedFile);
+  	document.getElementById('closeoptions').click();
   }
 
   static exportSave() {
   	let saveFile = new Blob([btoa(JSON.stringify(data))], { type: "text/json;charset=utf-8" });
-  	saveAs(saveFile, "speckcoin-incremental-save.json");
+  	setTimeout(function(){saveAs(saveFile, "speckcoin-incremental-save.json");}, 1000);
   }
 
 }
