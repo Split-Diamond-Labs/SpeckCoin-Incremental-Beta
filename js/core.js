@@ -50,7 +50,8 @@ class Core {
   }
 
   static exportSave() {
-  	
+  	let saveFile = new Blob([btoa(JSON.stringify(data))], { type: "text/json;charset=utf-8" });
+  	saveAs(saveFile, "speckcoin-incremental-save.json");
   }
 
 }
