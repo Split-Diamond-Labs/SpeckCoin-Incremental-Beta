@@ -1,9 +1,9 @@
 // Tried to put into Core class, failed
-function format(num) {
+function format(num, showDecimals=false) {
   const numInSciNot = {};
         [numInSciNot.coefficient, numInSciNot.exponent] =
           num.toExponential(2).split('e').map(item => Number(item));
-        return (num >= 1000000) ? `${numInSciNot.coefficient}e${numInSciNot.exponent}` : String(num);
+        return (num >= 1000000) ? `${numInSciNot.coefficient}e${numInSciNot.exponent}` : (showDecimals ? String(num) : String(Math.floor(num)));
 }
 
 
@@ -165,11 +165,11 @@ $(document).ready(function() {
   }), 5);
 
   setInterval(function() {
-    data.game.coins.amounts[0] += data.game.coins.amounts[1] * 10 * (data.game.opals * 0.1 + 1);
+    data.game.coins.amounts[0] += Math.floor(data.game.coins.amounts[1]) * 10 * (data.game.opals * 0.1 + 1) / 100;
 
     for (var index = 2; index < data.game.coins.amounts.length; index++) {
-      data.game.coins.amounts[index - 1] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
-      data.game.coins.produced[index - 2] += data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1);
+      data.game.coins.amounts[index - 1] += Math.floor(data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1)) / 100;
+      data.game.coins.produced[index - 2] += Math.floor(data.game.coins.amounts[index] * (data.game.opals * 0.1 + 1)) / 100;
     }
 
     for (var index = 1; index < data.game.diamonds.amounts.length; index++) {
@@ -183,7 +183,7 @@ $(document).ready(function() {
         data.game.neutrons += data.game.protons.amounts[1];
       }
     }
-  }, 1000);
+  }, 10);
 
 
   window.addEventListener("beforeunload", function (e) { Core.saveGame(data) });
