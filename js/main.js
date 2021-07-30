@@ -124,7 +124,11 @@ $(document).ready(function() {
     reset();
     $("#saveFound").html("Starting game...");
   }
-
+  let soundtrackStarted = false;
+document.getElementById("soundtrack").addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
 
   document.getElementById("default").click();
   setInterval((function() { // Update
@@ -136,6 +140,11 @@ $(document).ready(function() {
     } else {
       Core.hideById("loader");
       Core.showById("pageContent");
+      if (!soundtrackStarted) {
+        soundtrackStarted = true;
+        document.getElementById("soundtrack").play();
+
+      }
     }
 	  
     if (timePassed % 200 == 0) secondsPassed++;
