@@ -143,8 +143,6 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
       if (!soundtrackStarted) {
         soundtrackStarted = true;
         document.getElementById("soundtrack").muted = true;
-        const 😏😏😏 = "😏😏😏";
-        console.log(😏😏😏);
         document.getElementById("soundtrack").play();
 
       }
