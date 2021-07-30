@@ -142,7 +142,6 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
       Core.showById("pageContent");
       if (!soundtrackStarted) {
         soundtrackStarted = true;
-        document.getElementById("soundtrack").muted = true;
         document.getElementById("soundtrack").play();
 
       }
