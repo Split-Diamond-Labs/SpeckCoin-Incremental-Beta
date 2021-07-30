@@ -54,6 +54,13 @@ class Core {
   	let saveFile = new Blob([btoa(JSON.stringify(data))], { type: "text/json;charset=utf-8" });
   	setTimeout(function(){saveAs(saveFile, "speckcoin-incremental-save.json");}, 1000);
   }
+  static muteToggle() {
+  	if (document.getElementById("soundtrack").muted == true) {
+  		document.getElementById("soundtrack").muted = false;
+  	} else {
+  		document.getElementById("soundtrack").muted = true;
+  	}
+  }
 
 }
 var numSteps=0;
