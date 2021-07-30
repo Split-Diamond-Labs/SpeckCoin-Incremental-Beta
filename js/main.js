@@ -140,11 +140,6 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
     } else {
       Core.hideById("loader");
       Core.showById("pageContent");
-      if (!soundtrackStarted) {
-        soundtrackStarted = true;
-        document.getElementById("soundtrack").play();
-
-      }
     }
 	  
     if (timePassed % 200 == 0) secondsPassed++;
