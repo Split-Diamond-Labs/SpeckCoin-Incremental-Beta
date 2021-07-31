@@ -134,12 +134,20 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
   setInterval((function() { // Update
     timePassed++;
 
-    if (timePassed < 600) {
+    if (timePassed < 400) {
       Core.showById("loader");
       Core.hideById("pageContent");
     } else {
       Core.hideById("loader");
       Core.showById("pageContent");
+    }
+
+    if (timePassed == 399) {
+      $("#saveFound").html("Ready!");
+      muteToggle();
+      /* if (confirm("Do you want to start the game with sound?")) {
+        muteToggle();
+      } */
     }
 	  
     if (timePassed % 200 == 0) secondsPassed++;
@@ -165,6 +173,10 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
       } else {
         $("#coinDisp" + index).hide();
       }
+    }
+
+    for (var index = 0; index < data.unlockedCoins.length; index++) {    
+      if ()
     }
   }), 5);
 
