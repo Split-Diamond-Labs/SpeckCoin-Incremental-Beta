@@ -40,8 +40,6 @@ const coins = {
         if (!(this.cost(lvl) > data.game.coins.amounts[0])) {
           data.game.coins.amounts[0] -= this.cost(lvl);
           data.game.coins.amounts[lvl]++;
-        } else {
-          Core.notify("You cannot afford this!");
         }
       },
       cost: function (lvl) {

@@ -28,15 +28,15 @@ class Core {
   }
 
   static saveGame(data) {
-    localStorage.setItem("local_game_saved",true);
-    localStorage.setItem("save", JSON.stringify(data));
+    localStorage.setItem("game_saved",true);
+    localStorage.setItem("json_save", JSON.stringify(data));
   }
 
   static loadGameTo() {
-    if (localStorage.getItem("local_game_saved") != "true") {
+    if (localStorage.getItem("game_saved") != "true") {
       return false;
     }
-    data = JSON.parse(localStorage.getItem("save"));
+    data = JSON.parse(localStorage.getItem("json_save"));
     return true;
   }
 
