@@ -174,8 +174,14 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
       }
     }
 
-    for (var index = 0; index < data.unlockedCoins.length; index++) {    
-      if ()
+    for (var index = 1; index < data.unlockedCoins.length; index++) {    
+      if (coins.cost(index) > data.game.coins.amounts[0]) {
+        document.getElementById("coin" + index).classList.add("not-available");
+        document.getElementById("coin" + index).classList.remove("available");
+      } else {
+        document.getElementById("coin" + index).classList.remove("not-available");
+        document.getElementById("coin" + index).classList.add("available");
+      }
     }
   }), 5);
 
