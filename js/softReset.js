@@ -1,4 +1,4 @@
-const SoftReset = {
+/* const SoftReset = {
 	prestige(type) {
     // Prestige function 
     if (!data.game.coins.amounts[0] >= 1e50) {
@@ -27,3 +27,4 @@ const SoftReset = {
     }
 	}
 }
+*/
