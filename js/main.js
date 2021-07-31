@@ -145,7 +145,7 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
     if (timePassed == 399) {
       $("#saveFound").html("Ready!");
       if (confirm("Do you want to start the game with sound?")) {
-        muteToggle();
+        Core.muteToggle();
       } 
     }
 	  
