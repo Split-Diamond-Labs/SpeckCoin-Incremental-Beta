@@ -144,7 +144,8 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
       $("#saveFound").html("Ready!");
       if (confirm("Do you want to start the game with sound?")) {
         Core.muteToggle();
-      } 
+      }
+      document.getElementById("soundtrack").play();
     }
 	  
     if (timePassed % 200 == 0) secondsPassed++;
