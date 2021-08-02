@@ -140,17 +140,18 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
       Core.showById("pageContent");
     }
 
-    if (timePassed == 380) {
+    if (timePassed == 350) {
       $("#saveFound").html("Ready!");
     }
 
-    if (timePassed == 399) {
+    if (timePassed == 360) {
       if (confirm("Do you want to start the game with sound?")) {
         Core.muteToggle();
-        document.getElementById("soundtrack").play();
-      } else {
-        document.getElementById("soundtrack").play();
       }
+    }
+
+    if (timePassed == 400) {
+      document.getElementById("soundtrack").play();
     }
 	  
     if (timePassed % 200 == 0) secondsPassed++;
