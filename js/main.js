@@ -109,6 +109,28 @@ function reset() {
 
 }
 
+const modal = document.createElement('div');
+modal.classList.add('modal');
+modal.id = 'modal';
+$("modal").hide;
+
+modal.innerHTML = `
+  <div class="modalContent">
+    <span class="close2">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalParagraph"></p>
+    <div id="otherHTML"></div>
+  </div>
+`;
+
+modal.querySelector('.close2').addEventListener('click', () => { $("modal").hide(); });
+
+function displayModal(title, paragraph, otherHTML="") {
+  $("modalTitle").html(title);
+  $("modalParagraph").html(paragraph);
+  $("otherHTML").html(otherHTML);
+  $("modal").show();
+}
 
 // Global Variables (For display and stuff)
 let timePassed = 0;
