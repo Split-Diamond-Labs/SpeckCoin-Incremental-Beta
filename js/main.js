@@ -172,7 +172,7 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
       }
     }
 
-    if (timePassed == 400) {
+    if (timePassed == 500) {
       document.getElementById("soundtrack").play();
     }
 	  
