@@ -149,7 +149,9 @@ document.getElementById("soundtrack").addEventListener('ended', function() {
     this.currentTime = 0.1;
     this.play();
 }, false);
-  displayModal("Do you want to start with sound?", "", "<button style='background-color: #4CAF50; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;' onclick='(function(){Core.muteToggle();$(\"modal\").hide;})();'><button style='background-color: #f44336; /* Red */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;' onclick='$(\"modal\").hide;")
+  displayModal("Do you want to start with sound?", "", "<button style='background-color: #4CAF50; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;' onclick='(function(){Core.muteToggle();$(\"modal\").hide;})();'><button style='background-color: #f44336; /* Red */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;' onclick='$(\"modal\").hide;");
+	
+	setTimeout(document.getElementById("soundtrack").play, 50);
 
   document.getElementById("default").click();
   setInterval((function() { // Update
