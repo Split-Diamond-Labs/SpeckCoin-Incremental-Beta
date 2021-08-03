@@ -19,7 +19,7 @@ const SoftReset = {
             break;
           default:
             // Oh no, we have a problem 
-            console.error(`No prestge type ${type}`);
+            console.error(`Input Error: No prestge type ${type}`);
         }
       } else {
         return;
