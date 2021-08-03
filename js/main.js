@@ -146,7 +146,7 @@ $(document).ready(function() {
   }
   let soundtrackStarted = false;
 document.getElementById("soundtrack").addEventListener('ended', function() {
-    this.currentTime = 0;
+    this.currentTime = 0.1;
     this.play();
 }, false);
 
