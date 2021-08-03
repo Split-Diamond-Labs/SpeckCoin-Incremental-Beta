@@ -146,15 +146,36 @@ $(document).ready(function() {
   }
   let soundtrackStarted = false;
 document.getElementById("soundtrack").addEventListener('ended', function() {
-    this.currentTime = 0.1;
+    this.currentTime = 0;
     this.play();
 }, false);
-  displayModal("Do you want to start with sound?", "", "<button style='background-color: #4CAF50; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;' onclick='(function(){Core.muteToggle();$(\"modal\").hide;})();'><button style='background-color: #f44336; /* Red */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;' onclick='$(\"modal\").hide;")
 
   document.getElementById("default").click();
   setInterval((function() { // Update
     timePassed++;
 
+    if (timePassed < 400) {
+      Core.showById("loader");
+      Core.hideById("pageContent");
+    } else {
+      Core.hideById("loader");
+      Core.showById("pageContent");
+    }
+
+    if (timePassed == 350) {
+      $("#saveFound").html("Ready!");
+    }
+
+    if (timePassed == 360) {
+      if (confirm("Do you want to start the game with sound?")) {
+        Core.muteToggle();
+      }
+    }
+
+    if (timePassed == 400) {
+      document.getElementById("soundtrack").play();
+    }
+	  
     if (timePassed % 200 == 0) secondsPassed++;
 
     document.getElementById("coinDisplay").innerHTML = format(data.game.coins.amounts[0]);
