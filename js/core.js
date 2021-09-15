@@ -42,12 +42,12 @@ function format(num, showDecimals = false) {
 // Data Functions 
 
 function saveGame(data) {
-    localStorage.setItem("game_saved", true);
+    localStorage.setItem("game_savedeth", true);
     localStorage.setItem("json_save", JSON.stringify($_$));
 }
 
 function loadGameTo() {
-    if (localStorage.getItem("game_saved") != "true") {
+    if (localStorage.getItem("game_savedeth") != "true") {
         return false;
     }
     $_$ = JSON.parse(localStorage.getItem("json_save"));

@@ -1,7 +1,7 @@
 function changeStuff() {
     document.getElementById("lore-text").innerText = lore[++loreIndex];
 }
-if (localStorage.getItem("game_saved")) {
+if (localStorage.getItem("game_savedeth")) {
     showById("gameplay");
     hideById("loader")
 } else {
