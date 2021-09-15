@@ -86,7 +86,6 @@ a {
     }
     82.5% {
         opacity: 0;
-        filter: grayscale(100%);
     }
     88.75% {
         opacity: 1;
