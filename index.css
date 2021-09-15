@@ -140,3 +140,14 @@ body {
 #click-to-start {
     font-size: 4vh;
 }
+
+#loader {
+    cursor: none;
+}
+
+#gameplay {
+    cursor: url("./favicon.png");
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}

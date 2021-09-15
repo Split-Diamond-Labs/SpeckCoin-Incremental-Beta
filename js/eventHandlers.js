@@ -27,4 +27,6 @@ if (false /* localStorage.getItem("game_savedeth") */ ) {
     }, false);
 }
 
+document.getElementById('game-icon').ondragstart = function() { return false; };
+
 window.addEventListener("beforeunload", function(e) { saveGame($_$); });
