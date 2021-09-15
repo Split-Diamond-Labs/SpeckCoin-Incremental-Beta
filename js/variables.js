@@ -1,4 +1,22 @@
-const dataObject = {};
+const dataObject = {
+    "coins": 100,
+    "coinBuildings": {
+        "tier1": 0,
+        "tier2": 0,
+        "tier3": 0,
+        "tier4": 0,
+        "tier5": 0
+    },
+
+    "diamonds": 0,
+    "diamondBuildings": {
+        "tier1": 0,
+        "tier2": 0,
+        "tier3": 0,
+        "tier4": 0,
+        "tier5": 0
+    }
+};
 let $_$ = dataObject;
 
 let lore = [
