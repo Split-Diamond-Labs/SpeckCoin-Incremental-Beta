@@ -44,18 +44,76 @@
             <p style="text-align: center;" id="click-to-start"></p>
         </div>
     </div>
-    <div id="gameplay" style="display: none;">
-        Epic Game Content
-        <button id="optionsButton">Options</button>
-    </div>
+    <div id="gameplay" style="display: none; overflow: auto;">
+        <div class="interaction">
+            <!-- 
+            <div class="card" id="CB1">
+                <p class="amount-circle" id="CBA1">0</p>
+                <span class="info">i</span>
+                <div class="card" id="CBI1">
+                    <h1>Building Name</h1>
+                    <p>Information</p>
+                    <p style="text-decoration: bold;">Producing <span id="CBP1">0</span> SpeckCoins/s</p>
+                </div>
+            </div>
+             -->
+            <div class="card-container">
+                <div class="card" id="CB1">
+                    <img src="./images/flyspeckClone.png">
+                    <p class="amount-circle" id="CBA1">0</p>
+                    <p class="cost"><span id="CBC1">100</span> SpeckCoins</p>
+                    <span class="info">i</span>
+                    <div class="info-card" id="CBI1">
+                        <h1>Flyspeck Clone</h1>
+                        <p>King Flyspeck II had many clones, mostly for decoration before the Sixth Great War. When the kingdom was invaded, the clones were animated and used as expendible weapons against the cupcakes. Even after the weapon of mass destruction was unleashed, they remained sentient, probably due to the fact that Flyspeck II himself was still alive, having hidden underground.</p>
+                        <p><i>Producing <span id="CBP1">0</span> SpeckCoins/s, 10 SpeckCoins/s each</i></p>
+                    </div>
+                </div>
+<!-- 
+                <div class="card" id="CB2">
+                    <p class="amount-circle" id="CBA2">0</p>
+                    <p class="cost"><span id="CBC1">0</span> SpeckCoins</p>
+                    <span class="info">i</span>
+                    <div class="info-card" id="CBI2">
+                        <h1>Cloning Machine</h1>
+                        <p>During the war, progenation machines were suggested to combat the deadly wave of cupcakes. They were eventually rejected, due to the risk that they could be stolen by the cupcakes for their own purposes, but the war council decided to use giant cloning machines to create clones that could fight, but were not alive.</p>
+                        <p><i>Producing <span id="CBP2">0</span> Flyspeck Clones/s, 1 Flyspeck Clone/s each</i></p>
+                    </div>
+                </div>
+
+                <div class="card" id="CB3">
+                    <p class="amount-circle" id="CBA3">0</p>
+                    <p class="cost"><span id="CBC1">0</span> SpeckCoins</p>
+                    <span class="info">i</span>
+                    <div class="info-card" id="CBI3">
+                        <h1>3D Printer</h1>
+                        <p>3D printers were used in the war to manufacture weapons in the desperate fight against the cupcakes. They were the last resort after ore mines were taken over by the cupcakes, and oil reserves were the only resource left to the muffins. </p>
+                        <p><i>Producing <span id="CBP3">0</span> Cloning Machines/s, 1 Cloning Machine/s each</i></p>
+                    </div>
+                </div>
+
+                <div class="card" id="CB4">
+                    <p class="amount-circle" id="CBA4">0</p>
+                    <p class="cost"><span id="CBC1">0</span> SpeckCoins</p>
+                    <span class="info">i</span>
+                    <div class="info-card" id="CBI4">
+                        <h1>Factory</h1>
+                        <p>Factories were common in the muffin kingdom even before the Fourth Great War, in which the kingdom's leadership was toppled and replaced with the notable dictator Mussana IV. Even with the great depression that followed, the factories remained important in keeping the kingdom running. Many more factories were built in the reign of Flyspeck the Great, who dedicated a large plain to building factories, now dubbed "Factory Field".</p>
+                        <p><i>Producing <span id="CBP4">0</span> 3D Printers/s, 1 3D Printer/s each</i></p>
+                    </div>
+                </div> -->
+            </div>
+            <button id="optionsButton">Options</button>
+        </div>
+        <div class="resource-table">
+            <p id="speckcoin-resource">SpeckCoins: <span id="speckcoin-value">100</span></p>
+        </div>
 
 
     <!-- Modals -->
     <div id="options" class="modal">
         <div class="modal-content">
             <span class="close" id="closeoptions">&times;</span>
-            <br><br>
-            <button style="background-color: #555555; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;" onclick="Core.muteToggle()" id="soundToggle">Mute Sound</button>
             <br><br>
             <button style="background-color: #555555; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;" onclick="(function() {if (prompt('Do you really want to reset? You will lose all progress! (Type \'yes\' to confirm)') == 'yes') {reset();document.getElementById('closeoptions').click();}})()">Reset</button>
             <br><br><input type="file" id="importSave" accept=".json" hidden>

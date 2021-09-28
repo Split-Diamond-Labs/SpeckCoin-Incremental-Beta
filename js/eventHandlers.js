@@ -1,10 +1,7 @@
 function changeStuff() {
     document.getElementById("lore-text").innerText = lore[++loreIndex];
 }
-if (false /* localStorage.getItem("game_savedeth") */ ) {
-    showById("gameplay");
-    hideById("loader")
-} else {
+if (!localStorage.getItem("game_savedeth")) {
     window.addEventListener("load", function() {
         setTimeout(function() {
             document.getElementById("click-to-start").innerText = "Click to start";
@@ -25,8 +22,19 @@ if (false /* localStorage.getItem("game_savedeth") */ ) {
         hideById("logo");
         showById("logo2");
     }, false);
+} else {
+    skipLore()
 }
 
-document.getElementById('game-icon').ondragstart = function() { return false; };
+function skipLore() {
+    showById("gameplay");
+    hideById("loader");
+}
+
+let images = document.getElementsByTagName('IMG');
+
+for (let i = 0; i < images.length; i++) {
+    images[i].ondragstart = function() { return false; };
+}
 
 window.addEventListener("beforeunload", function(e) { saveGame($_$); });
