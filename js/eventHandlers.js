@@ -34,6 +34,10 @@ function skipLore() {
     hideById("loader");
 }
 
+if (url.searchParams.get("devMode")) {
+    document.write("<h1>DevMode does not exist, sorry for the inconvenience.</h1>")
+}
+
 let images = document.getElementsByTagName('IMG');
 
 for (let i = 0; i < images.length; i++) {
