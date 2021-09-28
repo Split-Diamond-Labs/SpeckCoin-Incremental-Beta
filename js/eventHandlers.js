@@ -1,7 +1,10 @@
 function changeStuff() {
     document.getElementById("lore-text").innerText = lore[++loreIndex];
 }
-if (!localStorage.getItem("game_savedeth")) {
+
+let url = new URL(window.location.href); 
+
+if (!localStorage.getItem("game_savedeth") || url.searchParams.get("lore")) {
     window.addEventListener("load", function() {
         setTimeout(function() {
             document.getElementById("click-to-start").innerText = "Click to start";
