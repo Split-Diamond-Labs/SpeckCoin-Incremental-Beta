@@ -35,7 +35,7 @@ function skipLore() {
 }
 
 if (url.searchParams.get("devMode")) {
-    document.write("<h1>DevMode does not exist, sorry for the inconvenience.</h1>")
+    setTimeout(() => { document.write("<h1 style='font-family: \"Segoe UI\"; font-size: 500%;'>DevMode does not exist, sorry for the inconvenience.</h1>") }, 1);
 }
 
 let images = document.getElementsByTagName('IMG');
