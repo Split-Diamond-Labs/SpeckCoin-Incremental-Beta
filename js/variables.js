@@ -1,4 +1,5 @@
 const dataObject = {
+<<<<<<< Updated upstream
     "coins": 100,
     "coinBuildings": {
         "costFactor": 1.1,
@@ -76,6 +77,79 @@ const dataObject = {
             "produced": 0,
             "cost": 10000,
             "multiplier": 1
+=======
+    "speckcoin": {
+        "name": "SpeckCoin",
+        "owned": 100,
+        "buildings": {
+            "tier1": {
+                "name": "Flyspeck Clone",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier2": {
+                "name": "Cloner",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier3": {
+                "name": "Printer",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier4": {
+                "name": "Factory",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier5": {
+                "name": "Industry",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            }
+        }
+    },
+
+    "diamond": {
+        "name": "Diamond",
+        "owned": 100,
+        "buildings": {
+            "tier1": {
+                "name": "Flyspeck Clone",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier2": {
+                "name": "Cloner",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier3": {
+                "name": "Printer",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier4": {
+                "name": "Factory",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier5": {
+                "name": "Industry",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            }
+>>>>>>> Stashed changes
         }
     }
 };
