@@ -35,7 +35,7 @@ function skipLore() {
 }
 
 function available(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
-    return $_$[buildingType + "s"] /* Amount of currency */ >= $_$[buildingType + "Buildings"]["tier" + tier]["cost"]; /* Cost of building */
+    return $_$[buildingType]["owned"] /* Amount of currency */ >= $_$[buildingType]["buildings"]["tier" + tier]["cost"]; /* Cost of building */
 }
 
 function buyBuilding(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
