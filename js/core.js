@@ -79,4 +79,5 @@ function refresh() {
         document.getElementById("CBC" + i).innerText = $_$["speckCoin"]["buildings"]["tier" + i]["cost"];
         document.getElementById("CBP" + i).innerText = $_$["speckCoin"]["buildings"]["tier" + i]["baseRate"] * Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]) * $_$["speckCoin"]["buildings"]["tier" + i]["multiplier"];
     }
+    document.getElementById("").innerText = Math.floor($_$["speckCoin"]["owned"]);
 }
