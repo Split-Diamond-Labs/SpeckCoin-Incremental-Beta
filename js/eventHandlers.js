@@ -49,23 +49,23 @@ function buyBuilding(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 
 }
 
 document.getElementById("CB1").addEventListener("click", function() {
-    buyBuilding("coin", 1);
+    buyBuilding("speckCoin", 1);
 });
 
 document.getElementById("CB2").addEventListener("click", function() {
-    buyBuilding("coin", 2);
+    buyBuilding("speckCoin", 2);
 });
 
 document.getElementById("CB3").addEventListener("click", function() {
-    buyBuilding("coin", 3);
+    buyBuilding("speckCoin", 3);
 });
 
 document.getElementById("CB4").addEventListener("click", function() {
-    buyBuilding("coin", 4);
+    buyBuilding("speckCoin", 4);
 });
 
 document.getElementById("CB5").addEventListener("click", function() {
-    buyBuilding("coin", 5);
+    buyBuilding("speckCoin", 5);
 });
 
 // for (let i = 1; i <= 5; i++) {
