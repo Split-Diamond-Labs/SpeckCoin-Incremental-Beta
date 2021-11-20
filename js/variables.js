@@ -1,5 +1,5 @@
 const dataObject = {
-    "speckcoin": {
+    "speckCoin": {
         "name": "SpeckCoin",
         "owned": 100,
         "costFactor": 1.1,
