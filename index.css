@@ -1,257 +1,270 @@
-    @charset "UTF-8";
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
+@charset "UTF-8";
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+}
+/* Modal Content */
+
+.modal-content {
+    background-color: #000000;
+    margin: auto;
+    padding: 3%;
+    border: 1px solid #888;
+    border-radius: 12px;
+    width: 80%;
+}
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.available {
+    background-color: green;
+}
+
+.not-available {
+    background-color: black;
+}
+
+p,
+a {
+    color: white;
+    font-size: 1.2vh;
+}
+
+h1 {
+    font-size: 2.5vh;
+}
+
+@keyframes lore {
+    0% {
+        color: black;
     }
-    /* Modal Content */
-    
-    .modal-content {
-        background-color: #000000;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        border-radius: 12px;
-        width: 80%;
-    }
-    /* The Close Button */
-    
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    
-    .available {
-        background-color: green;
-    }
-    
-    .not-available {
-        background-color: black;
-    }
-    
-    p,
-    a {
+    25% {
         color: white;
     }
-    
-    @keyframes lore {
-        0% {
-            color: black;
-        }
-        25% {
-            color: white;
-        }
-        75% {
-            color: white;
-        }
-        100% {
-            color: black;
-        }
-    }
-    
-    @keyframes logo2 {
-        0% {
-            opacity: 0;
-            filter: grayscale(100%);
-        }
-        82.5% {
-            opacity: 0;
-        }
-        88.75% {
-            opacity: 1;
-            filter: grayscale(100%);
-        }
-        95% {
-            filter: grayscale(0%);
-        }
-    }
-    
-    .lore {
-        animation: lore 3.5s linear 0s 8;
-        text-align: center;
-        font-size: 3vh;
-        padding-top: 20%;
-        padding-bottom: 0;
-        padding-right: 0;
-    }
-    
-    .lore h1 {
-        background-color: black;
-    }
-    
-    .logo {
-        animation: lore 5s linear 28s;
-        text-align: center;
-        font-size: 4vh;
-        padding-top: 20%;
-        padding-bottom: 0;
-        padding-right: 0;
-    }
-    
-    .logo2 {
-        margin: 0 auto;
-        display: block;
-        animation: logo2 40s linear;
-        width: 100%;
-    }
-    
-    body {
-        overflow: hidden;
-        /* Hide scrollbars */
-        padding: 5px;
-    }
-    
-    #game-icon {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        height: 80%;
-    }
-    
-    #click-to-start {
-        font-size: 4vh;
-    }
-    
-    #loader {
-        cursor: none;
-    }
-    
-    #gameplay {
-        cursor: url("./favicon.png");
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-    }
-    
-    .resource-table {
-        border: 1px solid white;
-        border-radius: 12px;
-        height: 100%;
-        width: calc(19.5% - 16px);
-        float: right;
-        margin: 0;
-        padding-left: 16px;
-        font-size: 150%;
-    }
-    
-    .interaction {
-        border: 1px solid white;
-        border-radius: 12px;
-        height: calc(100% - 20px);
-        width: calc(79.5% - 20px);
-        float: left;
-        padding: 10px;
-    }
-    
-    .card-container {
-        display: grid;
-    }
-    
-    .card {
-        height: auto;
-        width: 250px;
-        border: 1px solid white;
-        border-radius: 6%;
-        padding: 0;
-        position: relative;
-        float: left;
-    }
-    
-    .card img {
-        width: 250px;
-        height: auto;
-    }
-    
-    .amount-circle {
-        position: absolute;
-        top: -20px;
-        left: 0px;
-        background-color: grey;
-        width: 25px;
-        font-size: 20px;
-        border-radius: 50%;
-        text-align: center;
-    }
-    
-    .info-card {
-        display: none;
-        border: 1px solid white;
-        background-color: #3F3F3F;
-        border-radius: 5px;
-        width: 250px;
-        padding: 10px;
-    }
-    
-    .info {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        width: 25px;
-        height: 22.5px;
-        border-radius: 50%;
-        background: blue;
-        color: white;
-        text-align: center;
-        font-family: "Monotype Corsiva", "Mutter Krause Hal", "Sudbury Book-Italic";
-        font-size: 20px;
-        padding-top: 2.5px;
-        cursor: pointer;
-    }
-    
-    .info:hover+.info-card {
-        display: block;
-        position: absolute;
-        top: 0px;
-        right: -280px;
-    }
-    
-    .info:hover {
-        background-color: #3F3FFF;
-    }
-    
-    .cost {
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    button {
-        border: 5px solid #888;
-        border-radius: 10px;
-        padding: 12px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: black;
+    75% {
         color: white;
     }
-    
-    #options label,
-    button {
-        border: 5px solid #888;
-        border-radius: 10px;
-        padding: 12px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: black;
-        color: white;
+    100% {
+        color: black;
     }
+}
+
+@keyframes logo2 {
+    0% {
+        opacity: 0;
+        filter: grayscale(100%);
+    }
+    82.5% {
+        opacity: 0;
+    }
+    88.75% {
+        opacity: 1;
+        filter: grayscale(100%);
+    }
+    95% {
+        filter: grayscale(0%);
+    }
+}
+
+.lore {
+    animation: lore 3.5s linear 0s 8;
+    text-align: center;
+    font-size: 3vh;
+    padding-top: 20%;
+    padding-bottom: 0;
+    padding-right: 0;
+}
+
+.lore h1 {
+    background-color: black;
+    font-size: 5vh;
+}
+
+.logo {
+    animation: lore 5s linear 28s;
+    text-align: center;
+    font-size: 4vh;
+    padding-top: 20%;
+    padding-bottom: 0;
+    padding-right: 0;
+}
+
+.logo2 {
+    margin: 0 auto;
+    display: block;
+    animation: logo2 40s linear;
+    width: 100%;
+}
+
+body {
+    overflow: hidden;
+    /* Hide scrollbars */
+    padding: 5px;
+}
+
+#game-icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+}
+
+#click-to-start {
+    font-size: 4vh;
+}
+
+#loader {
+    cursor: none;
+}
+
+#gameplay {
+    cursor: url("./favicon.png");
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.resource-table {
+    border: 1px solid white;
+    border-radius: 12px;
+    height: 100%;
+    width: calc(19.5% - 16px);
+    float: right;
+    margin: 0;
+    padding-left: 16px;
+}
+
+.resource-table p {
+    font-size: 2.5vh;
+}
+
+.interaction {
+    border: 1px solid white;
+    border-radius: 12px;
+    height: calc(100% - 20px);
+    width: calc(79.5% - 20px);
+    float: left;
+    padding: 10px;
+}
+
+.card-container {
+    display: grid;
+}
+
+.card {
+    height: auto;
+    width: 10vw;
+    border: 1px solid white;
+    border-radius: 6%;
+    padding: 0;
+    position: relative;
+    float: left;
+}
+
+.card img {
+    width: 10vw;
+    height: auto;
+}
+
+.amount-circle {
+    position: absolute;
+    top: -0.78125vw;
+    left: 0px;
+    background-color: grey;
+    width: 1vw;
+    height: 1vw;
+    font-size: 0.8vw;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.info-card {
+    display: none;
+    border: 1px solid white;
+    background-color: #3F3F3F;
+    border-radius: 5px;
+    width: calc(10vw - 10px);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+}
+
+.info {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background: blue;
+    color: white;
+    text-align: center;
+    font-family: "Monotype Corsiva", "Mutter Krause Hal", "Sudbury Book-Italic";
+    font-size: 0.8vw;
+    padding-top: 2.5px;
+    cursor: pointer;
+}
+
+.info:hover+.info-card {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: -11vw;
+}
+
+.info:hover {
+    background-color: #3F3FFF;
+}
+
+.cost {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    border: 5px solid #888;
+    border-radius: 10px;
+    padding: 0.9vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+    font-size: 1.2vh;
+}
+
+#options label,
+button {
+    border: 5px solid #888;
+    border-radius: 10px;
+    padding: 0.9vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+}
