@@ -9,6 +9,7 @@ const dataObject = {
                 "cost": 100,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 10,
                 "multiplier": 1
             },
             "tier2": {
@@ -16,6 +17,7 @@ const dataObject = {
                 "cost": 2000,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 1,
                 "multiplier": 1
             },
             "tier3": {
@@ -23,6 +25,7 @@ const dataObject = {
                 "cost": 40000,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 1,
                 "multiplier": 1
             },
             "tier4": {
@@ -30,6 +33,7 @@ const dataObject = {
                 "cost": 800000,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 1,
                 "multiplier": 1
             },
             "tier5": {
@@ -37,6 +41,7 @@ const dataObject = {
                 "cost": 16000000,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 1,
                 "multiplier": 1
             }
         }
