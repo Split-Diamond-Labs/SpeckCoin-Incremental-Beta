@@ -6,30 +6,35 @@ const dataObject = {
         "buildings": {
             "tier1": {
                 "name": "Flyspeck Clone",
+                "cost": 100,
                 "owned": 0,
                 "produced": 0,
                 "multiplier": 1
             },
             "tier2": {
                 "name": "Cloner",
+                "cost": 2000,
                 "owned": 0,
                 "produced": 0,
                 "multiplier": 1
             },
             "tier3": {
                 "name": "Printer",
+                "cost": 40000,
                 "owned": 0,
                 "produced": 0,
                 "multiplier": 1
             },
             "tier4": {
                 "name": "Factory",
+                "cost": 800000,
                 "owned": 0,
                 "produced": 0,
                 "multiplier": 1
             },
             "tier5": {
                 "name": "Industry",
+                "cost": 16000000,
                 "owned": 0,
                 "produced": 0,
                 "multiplier": 1
