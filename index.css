@@ -175,6 +175,7 @@
         border-radius: 6%;
         padding: 0;
         position: relative;
+        float: left;
     }
     
     .card img {
