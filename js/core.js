@@ -72,3 +72,11 @@ function exportSave() {
 function reset() {
     $_$ = dataObject;
 }
+
+function refresh() {
+    for (let i = 1; i <= 5; i++) {
+        document.getElementById("CBA" + i).innerText = $_$["speckCoin"]["buildings"]["tier" + i]["owned"];
+        document.getElementById("CBC" + i).innerText = $_$["speckCoin"]["buildings"]["tier" + i]["cost"];
+        document.getElementById("CBP" + i).innerText = $_$["speckCoin"]["buildings"]["tier" + i]["baseRate"] * $_$["speckCoin"]["buildings"]["tier" + i]["owned"] * $_$["speckCoin"]["buildings"]["tier" + i]["multiplier"];
+    }
+}
