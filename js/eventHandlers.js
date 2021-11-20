@@ -40,9 +40,9 @@ function available(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 
 
 function buyBuilding(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
     if (available(buildingType, tier)) {
-        $_$[buildingType + "Buildings"]["tier" + tier]["owned"]++;
-        $_$[buildingType + "s"] -= $_$[buildingType + "Buildings"]["tier" + tier]["cost"];
-        $_$[buildingType + "Buildings"]["tier" + tier]["cost"] *= $_$[buildingType + "Buildings"]["costFactor"];
+        $_$[buildingType]["buildings"]["tier" + tier]["owned"]++;
+        $_$[buildingType]["owned"] -= $_$[buildingType]["buildings"]["tier" + tier]["cost"];
+        $_$[buildingType]["buildings"]["tier" + tier]["cost"] *= $_$[buildingType]["costFactor"];
         return true;
     } 
     return false;
