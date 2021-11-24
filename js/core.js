@@ -41,13 +41,13 @@ function format(num, showDecimals = false) {
 
 // Data Functions 
 
-function saveGame(data) {
+function saveGame() {
     localStorage.setItem("game_savedeth", true);
     localStorage.setItem("json_save", JSON.stringify($_$));
 }
 
 function loadGameTo() {
-    if (localStorage.getItem("game_savedeth") != "true") {
+    if (!localStorage.getItem("game_savedeth")) {
         return false;
     }
     $_$ = JSON.parse(localStorage.getItem("json_save"));
@@ -75,9 +75,22 @@ function reset() {
 
 function refresh() {
     for (let i = 1; i <= 5; i++) {
-        document.getElementById("CBA" + i).innerText = Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]);
-        document.getElementById("CBC" + i).innerText = Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["cost"]);
-        document.getElementById("CBP" + i).innerText = $_$["speckCoin"]["buildings"]["tier" + i]["baseRate"] * Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]) * $_$["speckCoin"]["buildings"]["tier" + i]["multiplier"];
+        document.getElementById("CBA" + i).innerText = format(Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]));
+        document.getElementById("CBC" + i).innerText = format(Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["cost"]));
+        document.getElementById("CBP" + i).innerText = format($_$["speckCoin"]["buildings"]["tier" + i]["baseRate"] * Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]) * $_$["speckCoin"]["buildings"]["tier" + i]["multiplier"]);
+        if (available("speckCoin", i)) {
+            document.getElementById("CB" + i).style.backgroundColor = "green";
+        } else {
+            document.getElementById("CB" + i).style.backgroundColor = "black";
+        }
+        if (!$_$["speckCoin"]["buildings"]["tier" + i]["unlocked"]) {
+            document.getElementById("CB" + i).style.display = "none";
+            if ($_$["speckCoin"]["owned"] >= ($_$["speckCoin"]["buildings"]["tier" + i]["cost"]) / 2) {
+                document.getElementById("CB" + i).style.display = "block";
+                $_$["speckCoin"]["buildings"]["tier" + i]["unlocked"] = true;
+            }
+        }
     }
-    document.getElementById("speckcoin-value").innerText = Math.floor($_$["speckCoin"]["owned"]);
+    document.getElementById("speckcoin-value").innerText = format(Math.floor($_$["speckCoin"]["owned"]));
+
 }

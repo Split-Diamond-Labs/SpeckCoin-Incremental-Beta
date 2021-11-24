@@ -10,7 +10,8 @@ const dataObject = {
                 "owned": 0,
                 "produced": 0,
                 "baseRate": 10,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": true
             },
             "tier2": {
                 "name": "Cloner",
@@ -18,7 +19,8 @@ const dataObject = {
                 "owned": 0,
                 "produced": 0,
                 "baseRate": 1,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier3": {
                 "name": "Printer",
@@ -26,7 +28,8 @@ const dataObject = {
                 "owned": 0,
                 "produced": 0,
                 "baseRate": 1,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier4": {
                 "name": "Factory",
@@ -34,7 +37,8 @@ const dataObject = {
                 "owned": 0,
                 "produced": 0,
                 "baseRate": 1,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier5": {
                 "name": "Industry",
@@ -42,7 +46,8 @@ const dataObject = {
                 "owned": 0,
                 "produced": 0,
                 "baseRate": 1,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             }
         }
     },
@@ -55,31 +60,36 @@ const dataObject = {
                 "name": "Flyspeck Clone",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier2": {
                 "name": "Cloner",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier3": {
                 "name": "Printer",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier4": {
                 "name": "Factory",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier5": {
                 "name": "Industry",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             }
         }
     }

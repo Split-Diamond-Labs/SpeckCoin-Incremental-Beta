@@ -82,5 +82,19 @@ for (let i = 0; i < images.length; i++) {
     images[i].ondragstart = function() { return false; };
 }
 
-window.addEventListener("beforeunload", function(e) { saveGame($_$); });
+loadGameTo();
 
+let autoSave = setInterval(saveGame, 30000);
+
+function setAutoSave(newInterval) {
+  clearInterval(autoSave);
+  autoSave = setInterval(saveGame, newInterval);
+}
+
+var slider = document.getElementById("autoSave");
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  document.getElementById("output").innerText = "" + Math.floor(this.value / 10) + "." + this.value % 10;
+  setAutoSave(this.value * 100, true);
+}
