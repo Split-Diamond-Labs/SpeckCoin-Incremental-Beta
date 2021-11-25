@@ -98,3 +98,10 @@ slider.oninput = function() {
   document.getElementById("output").innerText = "" + Math.floor(this.value / 10) + "." + this.value % 10;
   setAutoSave(this.value * 100, true);
 }
+
+for (let i = 1; i <= 5; i++) {
+    document.getElementById("CBII" + i).addEventListener("onclick", () => {
+        let infoCard = document.getElementById("CBI" + i);
+        infoCard.style.display = infoCard.style.display == "block" ? "none" : "block";
+    });
+}
