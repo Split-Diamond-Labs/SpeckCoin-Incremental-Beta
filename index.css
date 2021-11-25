@@ -175,6 +175,8 @@ body {
 
 .card-container {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
 }
 
 .card {
@@ -199,10 +201,12 @@ body {
     top: -0.78125vw;
     left: 0px;
     background-color: grey;
-    width: 1vw;
+    width: auto;
+    padding-left: 0.3vw;
+    padding-right: 0.3vw;
     height: 1vw;
     font-size: 0.8vw;
-    border-radius: 50%;
+    border-radius: 50% 0;
     text-align: center;
 }
 
@@ -223,7 +227,7 @@ body {
     right: 0px;
     width: 1vw;
     height: 1vw;
-    border-radius: 50%;
+    border-radius: 0 50%;
     background: blue;
     color: white;
     text-align: center;
