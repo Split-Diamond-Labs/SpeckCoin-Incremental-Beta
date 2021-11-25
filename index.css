@@ -101,7 +101,7 @@ h1 {
     padding-right: 0;
 }
 
-.lore, .logo h1 {
+.lore h1 {
     background-color: black;
     font-size: 5vh;
 }
@@ -148,7 +148,6 @@ body {
     width: 100%;
     height: 100%;
     padding: 10px;
-    overflow: hidden !important;
 }
 
 .resource-table {
@@ -159,7 +158,6 @@ body {
     float: right;
     margin: 0;
     padding-left: 16px;
-    overflow: hidden;
 }
 
 .resource-table p {
@@ -173,12 +171,10 @@ body {
     width: calc(79.5% - 20px);
     float: left;
     padding: 10px;
-    overflow: hidden;
 }
 
 .card-container {
     display: grid;
-    overflow: hidden;
 }
 
 .card {
@@ -191,7 +187,6 @@ body {
     float: left;
     background-color: black;
     transition: background-color 0.5s;
-    overflow: hidden;
 }
 
 .card img {
@@ -204,24 +199,22 @@ body {
     top: -0.78125vw;
     left: 0px;
     background-color: grey;
-    width: auto;
+    width: 1vw;
     height: 1vw;
     font-size: 0.8vw;
-    border-radius: 50% 0;
+    border-radius: 50%;
     text-align: center;
-    padding-bottom: 0.1vh;
-    padding-right: 0.4vw;
-    padding-left: 0.4vw;
 }
 
 .info-card {
+    display: none;
     border: 1px solid white;
     background-color: #3F3F3F;
     border-radius: 5px;
     width: calc(10vw - 10px);
     padding: 10px;
     position: absolute;
-    z-index: 5;
+    z-index: 1;
 }
 
 .info {
@@ -230,7 +223,7 @@ body {
     right: 0px;
     width: 1vw;
     height: 1vw;
-    border-radius: 0 50%;
+    border-radius: 50%;
     background: blue;
     color: white;
     text-align: center;
@@ -240,8 +233,11 @@ body {
     cursor: pointer;
 }
 
-.info:hover + .info-card {
-    display: block !important;
+.info:hover+.info-card {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: -11vw;
 }
 
 .info:hover {
