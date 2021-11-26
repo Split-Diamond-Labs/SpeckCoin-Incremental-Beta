@@ -1,4 +1,5 @@
 const dataObject = {
+<<<<<<< Updated upstream
     "coins": 100,
     "coinBuildings": {
         "costFactor": 1.1,
@@ -7,55 +8,35 @@ const dataObject = {
             "owned": 0,
             "produced": 0,
             "cost": 100,
-            "multiplier": 1,
-            "onget": `
-            $_$["coins"] -= $_$["coinBuildings"]["tier1"]["cost"];
-            $_$["coins"] -= $_$["coinBuildings"]["tier1"]["cost"] *= $_$["coinBuildings"]["costFactor"];
-            $_$["coinBuildings"]["tier1"][produced ? "produced" : "owned"]++;`
+            "multiplier": 1
         },
 
         "tier2": {
             "owned": 0,
             "produced": 0,
             "cost": 2000,
-            "multiplier": 1,
-            "onget": `
-            $_$["coins"] -= $_$["coinBuildings"]["tier2"]["cost"];
-            $_$["coins"] -= $_$["coinBuildings"]["tier2"]["cost"] *= $_$["coinBuildings"]["costFactor"];
-            $_$["coinBuildings"]["tier2"][produced ? "produced" : "owned"]++;`
+            "multiplier": 1
         },
 
         "tier3": {
             "owned": 0,
             "produced": 0,
             "cost": 40000,
-            "multiplier": 1,
-            "onget": `
-            $_$["coins"] -= $_$["coinBuildings"]["tier3"]["cost"];
-            $_$["coins"] -= $_$["coinBuildings"]["tier3"]["cost"] *= $_$["coinBuildings"]["costFactor"];
-            $_$["coinBuildings"]["tier3"][produced ? "produced" : "owned"]++;`
+            "multiplier": 1
         },
 
         "tier4": {
             "owned": 0,
             "produced": 0,
             "cost": 800000,
-            "multiplier": 1,
-            "onget": `
-            $_$["coins"] -= $_$["coinBuildings"]["tier4"]["cost"];
-            $_$["coins"] -= $_$["coinBuildings"]["tier4"]["cost"] *= $_$["coinBuildings"]["costFactor"];
-            $_$["coinBuildings"]["tier4"][produced ? "produced" : "owned"]++;`
+            "multiplier": 1
         },
 
         "tier5": {
             "owned": 0,
             "produced": 0,
             "cost": 16000000,
-            "multiplier": 1,
-            "onget": `
-            $_$["coins"] -= $_$["coinBuildings"]["tier5"]["cost"];
-            $_$["coins"] -= $_$["coinBuildings"]["tier5"]["cost"] *= $_$["coinBuildings"]["costFactor"];
-            $_$["coinBuildings"]["tier5"][produced ? "produced" : "owned"]++;`
+            "multiplier": 1
         }
     },
 
@@ -90,12 +71,85 @@ const dataObject = {
             "cost": 1000,
             "multiplier": 1
         },
-
+        
         "tier5": {
             "owned": 0,
             "produced": 0,
             "cost": 10000,
             "multiplier": 1
+=======
+    "speckcoin": {
+        "name": "SpeckCoin",
+        "owned": 100,
+        "buildings": {
+            "tier1": {
+                "name": "Flyspeck Clone",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier2": {
+                "name": "Cloner",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier3": {
+                "name": "Printer",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier4": {
+                "name": "Factory",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier5": {
+                "name": "Industry",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            }
+        }
+    },
+
+    "diamond": {
+        "name": "Diamond",
+        "owned": 100,
+        "buildings": {
+            "tier1": {
+                "name": "Flyspeck Clone",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier2": {
+                "name": "Cloner",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier3": {
+                "name": "Printer",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier4": {
+                "name": "Factory",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            },
+            "tier5": {
+                "name": "Industry",
+                "owned": 0,
+                "produced": 0,
+                "multiplier": 1
+            }
+>>>>>>> Stashed changes
         }
     }
 };

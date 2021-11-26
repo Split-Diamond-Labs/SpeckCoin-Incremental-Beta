@@ -2,7 +2,7 @@ function changeStuff() {
     document.getElementById("lore-text").innerText = lore[++loreIndex];
 }
 
-let url = new URL(window.location.href);
+let url = new URL(window.location.href); 
 
 if (!localStorage.getItem("game_savedeth") || url.searchParams.get("lore")) {
     window.addEventListener("load", function() {
@@ -34,20 +34,18 @@ function skipLore() {
     hideById("loader");
 }
 
-function available(buildingType /* "coin" | "diamond" */ , tier /* 1 | 2 | 3 | 4 | 5 */ ) {
+function available(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
     return $_$[buildingType + "s"] /* Amount of currency */ >= $_$[buildingType + "Buildings"]["tier" + tier]["cost"]; /* Cost of building */
 }
 
-function buyBuilding(buildingType /* "coin" | "diamond" */ , tier /* 1 | 2 | 3 | 4 | 5 */ ) {
+function buyBuilding(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
     if (available(buildingType, tier)) {
-        buildingGet(buildingType, tier, false)
+        $_$[buildingType + "Buildings"]["tier" + tier]["owned"]++;
+        $_$[buildingType + "s"] -= $_$[buildingType + "Buildings"]["tier" + tier]["cost"];
+        $_$[buildingType + "Buildings"]["tier" + tier]["cost"] *= $_$[buildingType + "Buildings"]["costFactor"];
         return true;
-    }
+    } 
     return false;
-}
-
-function buildingGet(buildingType /* "coin" | "diamond" */ , tier /* 1 | 2 | 3 | 4 | 5 */ , produced) {
-    Function("produced", $_$[buildingType + "Buildings"]["tier" + tier]["onget"])(produced);
 }
 
 document.getElementById("CB1").addEventListener("click", function() {
@@ -85,3 +83,4 @@ for (let i = 0; i < images.length; i++) {
 }
 
 window.addEventListener("beforeunload", function(e) { saveGame($_$); });
+
