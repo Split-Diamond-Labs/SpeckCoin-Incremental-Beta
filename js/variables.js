@@ -1,116 +1,53 @@
 const dataObject = {
-<<<<<<< Updated upstream
-    "coins": 100,
-    "coinBuildings": {
-        "costFactor": 1.1,
-
-        "tier1": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 100,
-            "multiplier": 1
-        },
-
-        "tier2": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 2000,
-            "multiplier": 1
-        },
-
-        "tier3": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 40000,
-            "multiplier": 1
-        },
-
-        "tier4": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 800000,
-            "multiplier": 1
-        },
-
-        "tier5": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 16000000,
-            "multiplier": 1
-        }
-    },
-
-    "diamonds": 0,
-    "diamondBuildings": {
-        "costFactor": 1.5,
-
-        "tier1": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 1,
-            "multiplier": 1
-        },
-
-        "tier2": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 10,
-            "multiplier": 1
-        },
-
-        "tier3": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 100,
-            "multiplier": 1
-        },
-
-        "tier4": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 1000,
-            "multiplier": 1
-        },
-        
-        "tier5": {
-            "owned": 0,
-            "produced": 0,
-            "cost": 10000,
-            "multiplier": 1
-=======
-    "speckcoin": {
+    "speckCoin": {
         "name": "SpeckCoin",
         "owned": 100,
+        "costFactor": 1.1,
         "buildings": {
             "tier1": {
                 "name": "Flyspeck Clone",
+                "cost": 100,
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "baseRate": 10,
+                "multiplier": 1,
+                "unlocked": true
             },
             "tier2": {
                 "name": "Cloner",
+                "cost": 2000,
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "baseRate": 1,
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier3": {
                 "name": "Printer",
+                "cost": 40000,
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "baseRate": 1,
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier4": {
                 "name": "Factory",
+                "cost": 800000,
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "baseRate": 1,
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier5": {
                 "name": "Industry",
+                "cost": 16000000,
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "baseRate": 1,
+                "multiplier": 1,
+                "unlocked": false
             }
         }
     },
@@ -123,33 +60,37 @@ const dataObject = {
                 "name": "Flyspeck Clone",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier2": {
                 "name": "Cloner",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier3": {
                 "name": "Printer",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier4": {
                 "name": "Factory",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             },
             "tier5": {
                 "name": "Industry",
                 "owned": 0,
                 "produced": 0,
-                "multiplier": 1
+                "multiplier": 1,
+                "unlocked": false
             }
->>>>>>> Stashed changes
         }
     }
 };

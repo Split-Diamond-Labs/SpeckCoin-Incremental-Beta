@@ -35,37 +35,37 @@ function skipLore() {
 }
 
 function available(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
-    return $_$[buildingType + "s"] /* Amount of currency */ >= $_$[buildingType + "Buildings"]["tier" + tier]["cost"]; /* Cost of building */
+    return $_$[buildingType]["owned"] /* Amount of currency */ >= $_$[buildingType]["buildings"]["tier" + tier]["cost"]; /* Cost of building */
 }
 
 function buyBuilding(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
     if (available(buildingType, tier)) {
-        $_$[buildingType + "Buildings"]["tier" + tier]["owned"]++;
-        $_$[buildingType + "s"] -= $_$[buildingType + "Buildings"]["tier" + tier]["cost"];
-        $_$[buildingType + "Buildings"]["tier" + tier]["cost"] *= $_$[buildingType + "Buildings"]["costFactor"];
+        $_$[buildingType]["buildings"]["tier" + tier]["owned"]++;
+        $_$[buildingType]["owned"] -= $_$[buildingType]["buildings"]["tier" + tier]["cost"];
+        $_$[buildingType]["buildings"]["tier" + tier]["cost"] *= $_$[buildingType]["costFactor"];
         return true;
     } 
     return false;
 }
 
 document.getElementById("CB1").addEventListener("click", function() {
-    buyBuilding("coin", 1);
+    buyBuilding("speckCoin", 1);
 });
 
 document.getElementById("CB2").addEventListener("click", function() {
-    buyBuilding("coin", 2);
+    buyBuilding("speckCoin", 2);
 });
 
 document.getElementById("CB3").addEventListener("click", function() {
-    buyBuilding("coin", 3);
+    buyBuilding("speckCoin", 3);
 });
 
 document.getElementById("CB4").addEventListener("click", function() {
-    buyBuilding("coin", 4);
+    buyBuilding("speckCoin", 4);
 });
 
 document.getElementById("CB5").addEventListener("click", function() {
-    buyBuilding("coin", 5);
+    buyBuilding("speckCoin", 5);
 });
 
 // for (let i = 1; i <= 5; i++) {
@@ -82,5 +82,19 @@ for (let i = 0; i < images.length; i++) {
     images[i].ondragstart = function() { return false; };
 }
 
-window.addEventListener("beforeunload", function(e) { saveGame($_$); });
+loadGameTo();
 
+let autoSave = setInterval(saveGame, 30000);
+
+function setAutoSave(newInterval) {
+  clearInterval(autoSave);
+  autoSave = setInterval(saveGame, newInterval);
+}
+
+var slider = document.getElementById("autoSave");
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  document.getElementById("output").innerText = "" + Math.floor(this.value / 10) + "." + this.value % 10;
+  setAutoSave(this.value * 100, true);
+}
