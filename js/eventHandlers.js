@@ -34,6 +34,10 @@ function skipLore() {
     hideById("loader");
 }
 
+function tierUnder(tier) {
+    return $_$["resources"][$_$["resources"].indexOf(tier) - 1];
+}
+
 function available(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 4 | 5 */) {
     return $_$[buildingType]["owned"] /* Amount of currency */ >= $_$[buildingType]["buildings"]["tier" + tier]["cost"]; /* Cost of building */
 }
@@ -46,6 +50,31 @@ function buyBuilding(buildingType /* "coin" | "diamond" */, tier /* 1 | 2 | 3 | 
         return true;
     } 
     return false;
+}
+
+function resetAvailable(tier) {
+    return $_$["resets"][tier]["cost"] <= $_$[tierUnder(tier)]["owned"];
+}
+
+function buyReset(tier) {
+    if (!resetAvailable(tier)) return false;
+    for (building in $_$[tierUnder(tier)]["buildings"]) {
+        $_$[tierUnder(tier)]["buildings"][building]["owned"] = 0;
+        $_$[tierUnder(tier)]["buildings"][building]["produced"] = 0;
+        $_$[tierUnder(tier)]["buildings"][building]["multiplier"] = 1;
+        $_$[tierUnder(tier)]["buildings"][building]["cost"] = dataObject[tierUnder(tier)]["buildings"][building]["cost"];
+    }
+    
+    let costPassed = false;
+    let currentCost = $_$["resets"][tier]["cost"];
+    
+    do {
+        $_$[tier]["owned"]++;
+        currentCost *= 1.1; 
+        if (currentCost > $_$[tierUnder(tier)]["owned"]) costPassed = true;
+    } while (!costPassed)
+    $_$[tierUnder(tier)]["owned"] = dataObject[tierUnder(tier)]["owned"];
+    $_$[tier]["unlocked"] = true;
 }
 
 document.getElementById("CB1").addEventListener("click", function() {
@@ -68,6 +97,30 @@ document.getElementById("CB5").addEventListener("click", function() {
     buyBuilding("speckCoin", 5);
 });
 
+document.getElementById("prestige").addEventListener("click", function() {
+    buyReset("diamond");
+});
+
+document.getElementById("DB1").addEventListener("click", function() {
+    buyBuilding("diamond", 1);
+});
+
+document.getElementById("DB2").addEventListener("click", function() {
+    buyBuilding("diamond", 2);
+});
+
+document.getElementById("DB3").addEventListener("click", function() {
+    buyBuilding("diamond", 3);
+});
+
+document.getElementById("DB4").addEventListener("click", function() {
+    buyBuilding("diamond", 4);
+});
+
+document.getElementById("DB5").addEventListener("click", function() {
+    buyBuilding("diamond", 5);
+});
+
 // for (let i = 1; i <= 5; i++) {
 //     document.getElementById("CB" + i).addEventListener("click", () => { buyBuilding("coin", i); });
 // }
@@ -81,8 +134,6 @@ let images = document.getElementsByTagName('IMG');
 for (let i = 0; i < images.length; i++) {
     images[i].ondragstart = function() { return false; };
 }
-
-loadGameTo();
 
 let autoSave = setInterval(saveGame, 30000);
 

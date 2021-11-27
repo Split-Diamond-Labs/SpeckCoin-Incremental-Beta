@@ -42,15 +42,15 @@ function format(num, showDecimals = false) {
 // Data Functions 
 
 function saveGame() {
-    localStorage.setItem("game_savedeth", true);
-    localStorage.setItem("json_save", JSON.stringify($_$));
+    localStorage.setItem(`game_saved_${game.version}`, true);
+    localStorage.setItem(`json_save_${game.version}`, JSON.stringify($_$));
 }
 
 function loadGameTo() {
-    if (!localStorage.getItem("game_savedeth")) {
+    if (!localStorage.getItem(`game_saved_${game.version}`)) {
         return false;
     }
-    $_$ = JSON.parse(localStorage.getItem("json_save"));
+    $_$ = JSON.parse(localStorage.getItem(`json_save_${game.version}`));
     return true;
 }
 
@@ -66,7 +66,7 @@ function importSave() {
 
 function exportSave() {
     let saveFile = new Blob([btoa(JSON.stringify($_$))], { type: "text/json;charset=utf-8" });
-    setTimeout(function() { saveAs(saveFile, "speckcoin-incremental-save.json"); }, 1000);
+    setTimeout(function() { saveAs(saveFile, `speckcoin-incremental-${game.version}-save.json`); }, 1000);
 }
 
 function reset() {
@@ -78,8 +78,9 @@ function refresh() {
         document.getElementById("CBA" + i).innerText = format(Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]));
         document.getElementById("CBC" + i).innerText = format(Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["cost"]));
         document.getElementById("CBP" + i).innerText = format($_$["speckCoin"]["buildings"]["tier" + i]["baseRate"] * Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]) * $_$["speckCoin"]["buildings"]["tier" + i]["multiplier"]);
+        document.getElementById("CBR" + i).innerText = format($_$["speckCoin"]["buildings"]["tier" + i]["baseRate"] * $_$["speckCoin"]["buildings"]["tier" + i]["multiplier"]);
         if (available("speckCoin", i)) {
-            document.getElementById("CB" + i).style.backgroundColor = "green";
+            document.getElementById("CB" + i).style.backgroundColor = "orange";
         } else {
             document.getElementById("CB" + i).style.backgroundColor = "black";
         }
@@ -89,8 +90,54 @@ function refresh() {
                 document.getElementById("CB" + i).style.display = "block";
                 $_$["speckCoin"]["buildings"]["tier" + i]["unlocked"] = true;
             }
+        } else {
+            document.getElementById("CB" + i).style.display = "block";
         }
     }
     document.getElementById("speckcoin-value").innerText = format(Math.floor($_$["speckCoin"]["owned"]));
 
+    if (!$_$["resets"]["diamond"]["unlocked"]) {
+        document.getElementById("prestige").style.display = "none";
+        if ($_$["speckCoin"]["owned"] >= Math.sqrt($_$["resets"]["diamond"]["cost"])) {
+            document.getElementById("prestige").style.display = "block";
+            $_$["resets"]["diamond"]["unlocked"] = true;
+        } else {
+            document.getElementById("prestige").style.display = "block";
+        }
+    }
+
+    if(resetAvailable("diamond")) {
+        document.getElementById("prestige").color = "white";
+        document.getElementById("prestige").backgroundColor = "cyan";
+    }
+
+    for (let i = 1; i <= 5; i++) {
+        document.getElementById("DBA" + i).innerText = format(Math.floor($_$["diamond"]["buildings"]["tier" + i]["owned"]));
+        document.getElementById("DBC" + i).innerText = format(Math.floor($_$["diamond"]["buildings"]["tier" + i]["cost"]));
+        document.getElementById("DBP" + i).innerText = format($_$["diamond"]["buildings"]["tier" + i]["baseRate"] * Math.floor($_$["diamond"]["buildings"]["tier" + i]["owned"]) * $_$["diamond"]["buildings"]["tier" + i]["multiplier"]);
+        if (available("diamond", i)) {
+            document.getElementById("DB" + i).style.backgroundColor = "cyan";
+        } else {
+            document.getElementById("DB" + i).style.backgroundColor = "black";
+        }
+        if (!$_$["diamond"]["buildings"]["tier" + i]["unlocked"]) {
+            document.getElementById("DB" + i).style.display = "none";
+            if ($_$["diamond"]["owned"] >= ($_$["diamond"]["buildings"]["tier" + i]["cost"]) / 2) {
+                document.getElementById("DB" + i).style.display = "block";
+                $_$["diamond"]["buildings"]["tier" + i]["unlocked"] = true;
+            }
+        } else {
+            document.getElementById("DB" + i).style.display = "block";
+        }
+    }
+    document.getElementById("diamond-value").innerText = format(Math.floor($_$["diamond"]["owned"]));
+    document.getElementById("deltamine-value").innerText = format(Math.floor($_$["products"]["deltamine"]["owned"]));
+
+    if ($_$["diamond"]["unlocked"]) {
+        document.getElementById("diamond-resource").style.display = "block";
+        document.getElementById("deltamine-product").style.display = "block";
+    } else {
+        document.getElementById("diamond-resource").style.display = "none";
+        document.getElementById("deltamine-product").style.display = "none";
+    }
 }

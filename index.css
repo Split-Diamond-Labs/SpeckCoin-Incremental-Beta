@@ -219,6 +219,7 @@ body {
     padding: 10px;
     position: absolute;
     z-index: 1;
+    min-width: 150px;
 }
 
 .info {
@@ -240,7 +241,7 @@ body {
 .info:hover+.info-card {
     display: block;
     position: absolute;
-    top: 0px;
+    top: 20px;
     right: -11vw;
 }
 

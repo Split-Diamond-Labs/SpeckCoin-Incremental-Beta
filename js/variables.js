@@ -2,6 +2,7 @@ const dataObject = {
     "speckCoin": {
         "name": "SpeckCoin",
         "owned": 100,
+        "unlocked": true,
         "costFactor": 1.1,
         "buildings": {
             "tier1": {
@@ -54,47 +55,80 @@ const dataObject = {
 
     "diamond": {
         "name": "Diamond",
-        "owned": 100,
+        "owned": 0,
+        "unlocked": false,
+        "costFactor": 2,
         "buildings": {
             "tier1": {
-                "name": "Flyspeck Clone",
+                "name": "Diamond Processor",
+                "cost": 1,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 1,
                 "multiplier": 1,
                 "unlocked": false
             },
             "tier2": {
-                "name": "Cloner",
+                "name": "Building 2",
+                "cost": 10,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 10,
                 "multiplier": 1,
                 "unlocked": false
             },
             "tier3": {
-                "name": "Printer",
+                "name": "Building 3",
+                "cost": 100,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 100,
                 "multiplier": 1,
                 "unlocked": false
             },
             "tier4": {
-                "name": "Factory",
+                "name": "Building 4",
+                "cost": 1000,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 1000,
                 "multiplier": 1,
                 "unlocked": false
             },
             "tier5": {
-                "name": "Industry",
+                "name": "Building 5",
+                "cost": 10000,
                 "owned": 0,
                 "produced": 0,
+                "baseRate": 10000,
                 "multiplier": 1,
                 "unlocked": false
             }
         }
-    }
+    },
+
+    "resets": {
+        "diamond": {
+            "name": "Prestige",
+            "cost": 1e16,
+            "scale": 1.1,
+            "unlocked": false
+        }
+    },
+
+    "products": {
+        "deltamine": {
+            "name": "Deltamine",
+            "owned": 0
+        }
+    },
+
+    "resources": [
+        "speckCoin",
+        "diamond"
+    ]
 };
-let $_$ = dataObject;
+let $_$ = JSON.parse(JSON.stringify(dataObject));
 
 let lore = [
     "They took away everything.",
@@ -107,3 +141,5 @@ let lore = [
     "You will understand soon."
 ]
 let loreIndex = 0;
+
+loadGameTo();
