@@ -102,13 +102,16 @@ function refresh() {
             document.getElementById("prestige").style.display = "block";
             $_$["resets"]["diamond"]["unlocked"] = true;
         } else {
-            document.getElementById("prestige").style.display = "block";
+            document.getElementById("prestige").style.display = "none";
         }
     }
 
-    if(resetAvailable("diamond")) {
+    if (resetAvailable("diamond")) {
         document.getElementById("prestige").color = "white";
         document.getElementById("prestige").backgroundColor = "cyan";
+    } else {
+        document.getElementById("prestige").color = "cyan";
+        document.getElementById("prestige").backgroundColor = "black";
     }
 
     for (let i = 1; i <= 5; i++) {
