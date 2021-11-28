@@ -1,5 +1,5 @@
 const game = {
 	"author": "Split Diamond Labs",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"licence": "GNU v3.1"
 };

@@ -106,12 +106,36 @@ const dataObject = {
             }
         }
     },
+    "upgrades": [
+        {
+            "name": "High-grade Plastic",
+            "cost": 1e6,
+            "currency": "speckCoin",
+            "unlocked": true,
+            "purchased": false
+        },
+        {
+            "name": "Pay Rises",
+            "cost": 1e10,
+            "currency": "speckCoin",
+            "unlocked": true,
+            "purchased": false
+        },
+        {
+            "name": "Royal Stamp",
+            "cost": 1e12,
+            "currency": "speckCoin",
+            "unlocked": true,
+            "purchased": false
+        }
+    ],
 
     "resets": {
         "diamond": {
             "name": "Prestige",
             "cost": 1e16,
             "scale": 1.1,
+            "total": 0,
             "unlocked": false
         }
     },
@@ -128,7 +152,24 @@ const dataObject = {
         "diamond"
     ]
 };
+
 let $_$ = JSON.parse(JSON.stringify(dataObject));
+
+const upgrades = [
+    () => {
+        $_$["speckCoin"]["buildings"]["tier1"]["baseRate"] *= 5;
+    },
+    () => {
+        $_$["speckCoin"]["buildings"]["tier5"]["baseRate"] *= 10;
+    },
+    () => {
+        $_$["speckCoin"]["buildings"]["tier1"]["baseRate"] *= 10;
+        $_$["speckCoin"]["buildings"]["tier2"]["baseRate"] *= 10;
+        $_$["speckCoin"]["buildings"]["tier3"]["baseRate"] *= 10;
+        $_$["speckCoin"]["buildings"]["tier4"]["baseRate"] *= 10;
+        $_$["speckCoin"]["buildings"]["tier5"]["baseRate"] *= 10;
+    }
+];
 
 let lore = [
     "They took away everything.",

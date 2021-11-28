@@ -10,10 +10,6 @@
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GDQBQT"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div id="loader">
         <div class="lore" id="lore">
             <h1 id="lore-text">They took away everything.</h1>
@@ -27,18 +23,12 @@
         </div>
     </div>
     <div id="gameplay" style="display: none; overflow: hidden;">
-        <div class="interaction">
-            <!-- 
-            <div class="card" id="DB1">
-                <p class="amount-circle" id="DBA1">0</p>
-                <span class="info">i</span>
-                <div class="card" id="DBI1">
-                    <h1>Building Name</h1>
-                    <p>Information</p>
-                    <p style="text-decoration: bold;">Producing <span id="DBP1">0</span> SpeckCoins/s</p>
-                </div>
-            </div>
-             -->
+        <div class="tab">
+            <button class="tablinks active" id="buildingsButton" onclick="tab(event, 'buildings')">Buildings</button>
+            <button class="tablinks" id="upgradesButton" onclick="tab(event, 'upgrades')">Upgrades</button>
+            <button class="tablinks" id="optionsButton">Options</button>
+        </div>
+        <div id="buildings" class="interaction">
             <div class="card-container">
                 <div class="card" id="CB1">
                     <img src="./images/flyspeckClone.png">
@@ -95,7 +85,7 @@
                         <p><i>Producing <span id="CBP5">0</span> Factories/s, <span id="CBR5">1</span> Factory/s each</i></p>
                     </div>
                 </div>
-                <button id="prestige" style="color: cyan; border-color: cyan;">Prestige</button>
+                <button id="prestige" style="color: cyan; border-color: cyan; transition: all 0.5s;">Prestige</button>
             </div>
             <div class="card-container">
                 <div class="card" id="DB1">
@@ -157,7 +147,40 @@
             </div>
             <br>
             <br>
-            <button id="optionsButton">Options</button>
+        </div>
+        <div id="upgrades" class="interaction" style="display: none;">
+            <div class="card-container">
+                <div class="card" id="CU0">
+                    <img src="./images/unknown.png">
+                    <p class="cost"><span id="CUC0">1e6 SpeckCoins</span></p>
+                    <span class="info">i</span>
+                    <div class="info-card" id="CUI0">
+                        <h1>High-grade Plastic</h1>
+                        <p>[Description]</p>
+                        <p><i>Effect: Flyspeck Clones are five times as fast</i></p>
+                    </div>
+                </div>
+                <div class="card" id="CU1">
+                    <img src="./images/unknown.png">
+                    <p class="cost"><span id="CUC1">1e10 SpeckCoins</span></p>
+                    <span class="info">i</span>
+                    <div class="info-card" id="CUI1">
+                        <h1>Pay Rises</h1>
+                        <p>[Description]</p>
+                        <p><i>Effect: Industries are ten times as fast</i></p>
+                    </div>
+                </div>
+                <div class="card" id="CU2">
+                    <img src="./images/unknown.png">
+                    <p class="cost"><span id="CUC2">1e12 SpeckCoins</span></p>
+                    <span class="info">i</span>
+                    <div class="info-card" id="CUI2">
+                        <h1>Royal Stamp</h1>
+                        <p>[Description]</p>
+                        <p><i>Effect: All coin buildings are 10 times as fast</i></p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="resource-table">
             <p id="speckcoin-resource">SpeckCoins: <span id="speckcoin-value" style="color: orange;">100</span></p>

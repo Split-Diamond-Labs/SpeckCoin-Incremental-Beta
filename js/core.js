@@ -74,6 +74,7 @@ function reset() {
 }
 
 function refresh() {
+    let buildingsAvailable = false;
     for (let i = 1; i <= 5; i++) {
         document.getElementById("CBA" + i).innerText = format(Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["owned"]));
         document.getElementById("CBC" + i).innerText = format(Math.floor($_$["speckCoin"]["buildings"]["tier" + i]["cost"]));
@@ -81,6 +82,7 @@ function refresh() {
         document.getElementById("CBR" + i).innerText = format($_$["speckCoin"]["buildings"]["tier" + i]["baseRate"] * $_$["speckCoin"]["buildings"]["tier" + i]["multiplier"]);
         if (available("speckCoin", i)) {
             document.getElementById("CB" + i).style.backgroundColor = "orange";
+            buildingsAvailable = true;
         } else {
             document.getElementById("CB" + i).style.backgroundColor = "black";
         }
@@ -107,11 +109,12 @@ function refresh() {
     }
 
     if (resetAvailable("diamond")) {
-        document.getElementById("prestige").color = "white";
-        document.getElementById("prestige").backgroundColor = "cyan";
+        document.getElementById("prestige").style.color = "black";
+        document.getElementById("prestige").style.backgroundColor = "cyan";
+        buildingsAvailable = true;
     } else {
-        document.getElementById("prestige").color = "cyan";
-        document.getElementById("prestige").backgroundColor = "black";
+        document.getElementById("prestige").style.color = "cyan";
+        document.getElementById("prestige").style.backgroundColor = "black";
     }
 
     for (let i = 1; i <= 5; i++) {
@@ -120,6 +123,7 @@ function refresh() {
         document.getElementById("DBP" + i).innerText = format($_$["diamond"]["buildings"]["tier" + i]["baseRate"] * Math.floor($_$["diamond"]["buildings"]["tier" + i]["owned"]) * $_$["diamond"]["buildings"]["tier" + i]["multiplier"]);
         if (available("diamond", i)) {
             document.getElementById("DB" + i).style.backgroundColor = "cyan";
+            buildingsAvailable = true;
         } else {
             document.getElementById("DB" + i).style.backgroundColor = "black";
         }
@@ -133,6 +137,10 @@ function refresh() {
             document.getElementById("DB" + i).style.display = "block";
         }
     }
+
+    document.getElementById("buildingsButton").style.backgroundColor = buildingsAvailable ? "grey" : "black";
+    document.getElementById("buildingsButton").style.color = buildingsAvailable ? "white" : "white";
+
     document.getElementById("diamond-value").innerText = format(Math.floor($_$["diamond"]["owned"]));
     document.getElementById("deltamine-value").innerText = format(Math.floor($_$["products"]["deltamine"]["owned"]));
 
@@ -143,4 +151,45 @@ function refresh() {
         document.getElementById("diamond-resource").style.display = "none";
         document.getElementById("deltamine-product").style.display = "none";
     }
+
+    let upgradesAvailable = false;
+    for (var i = 0; i < $_$["upgrades"].length; i++) {
+        if (upgradeAvailable(i)) {
+            document.getElementById("CU" + i).style.backgroundColor = "orange";
+            upgradesAvailable = true;
+        } else {
+            document.getElementById("CU" + i).style.backgroundColor = "black";
+        }
+        if ($_$["upgrades"][i]["purchased"]) {
+            document.getElementById("CUC" + i).style.color = "lime";
+            document.getElementById("CUC" + i).innerText = "Purchased!";
+        } else {
+            document.getElementById("CUC" + i).style.color = "white";
+            document.getElementById("CUC" + i).innerText = `${format($_$["upgrades"][i]["cost"])} SpeckCoins`;
+        }
+    }
+
+    document.getElementById("upgradesButton").style.backgroundColor = upgradesAvailable ? "grey" : "black";
+    document.getElementById("upgradesButton").style.color = upgradesAvailable ? "white" : "white";
+}
+
+function tab(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("interaction");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
 }

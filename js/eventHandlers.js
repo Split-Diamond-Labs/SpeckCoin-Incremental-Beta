@@ -63,8 +63,13 @@ function buyReset(tier) {
         $_$[tierUnder(tier)]["buildings"][building]["produced"] = 0;
         $_$[tierUnder(tier)]["buildings"][building]["multiplier"] = 1;
         $_$[tierUnder(tier)]["buildings"][building]["cost"] = dataObject[tierUnder(tier)]["buildings"][building]["cost"];
+        $_$[tierUnder(tier)]["buildings"][building]["baseRate"] = dataObject[tierUnder(tier)]["buildings"][building]["baseRate"];
     }
     
+    for (upgrade in $_$["upgrades"]) {
+        if ($_$["upgrades"][upgrade]["currency"] == tierUnder(tier)) $_$["upgrades"][upgrade]["purchased"] = false;
+    }
+
     let costPassed = false;
     let currentCost = $_$["resets"][tier]["cost"];
     
@@ -75,6 +80,17 @@ function buyReset(tier) {
     } while (!costPassed)
     $_$[tierUnder(tier)]["owned"] = dataObject[tierUnder(tier)]["owned"];
     $_$[tier]["unlocked"] = true;
+}
+
+function upgradeAvailable(upgrade) {
+    return !($_$["upgrades"][upgrade]["purchased"] || $_$[$_$["upgrades"][upgrade]["currency"]]["owned"] < $_$["upgrades"][upgrade]["cost"]);
+}
+
+function buyUpgrade(upgrade) {
+    if (!upgradeAvailable(upgrade)) return false;
+    $_$["upgrades"][upgrade]["purchased"] = true;
+    $_$[$_$["upgrades"][upgrade]["currency"]]["owned"] -= $_$["upgrades"][upgrade]["cost"];
+    (upgrades[upgrade])();
 }
 
 document.getElementById("CB1").addEventListener("click", function() {
@@ -119,6 +135,18 @@ document.getElementById("DB4").addEventListener("click", function() {
 
 document.getElementById("DB5").addEventListener("click", function() {
     buyBuilding("diamond", 5);
+});
+
+document.getElementById("CU0").addEventListener("click", function() {
+    buyUpgrade(0);
+});
+
+document.getElementById("CU1").addEventListener("click", function() {
+    buyUpgrade(1);
+});
+
+document.getElementById("CU2").addEventListener("click", function() {
+    buyUpgrade(2);
 });
 
 // for (let i = 1; i <= 5; i++) {
